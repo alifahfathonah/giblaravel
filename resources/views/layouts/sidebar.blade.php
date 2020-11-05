@@ -2,12 +2,24 @@
       <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">       
           <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('dashboard') }}"><img class="brand-logo" alt="Chameleon admin logo" src="/chameleon/theme-assets/images/logo/logo.png"/>
-              <h3 class="brand-text">GIB Database</h3></a></li>
+              <h3 class="brand-text">PASKAS Data</h3></a></li>
           <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
         </ul>
       </div>
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+          <li class="text-center" style="margin-bottom: 20px">
+            <div style="margin: auto;background-image: url('https://wallpaperheart.com/wp-content/uploads/2018/08/abstract-wallpaper-hd-9.jpg');width: 150px;border-radius: 150px;height: 150px;background-size: cover;background-position: center;"></div>
+            <div>
+              {{ Auth::user()->name }}
+            </div>
+            <p>
+              {{ Auth::user()->role }}
+            </p>
+            <p>
+              {{ Auth::user()->member_status }}
+            </p>
+          </li>
           <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}"><a href="{{ route('dashboard') }}"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
           </li>
           <li class=" nav-item"><a href="https://themeselection.com/demo/chameleon-admin-template/documentation"><i class="ft-book"></i><span class="menu-title" data-i18n="">Documentation</span></a>

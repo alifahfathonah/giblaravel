@@ -70,12 +70,14 @@
 	<link rel="stylesheet" type="text/css" href="/colorliblogin/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/colorliblogin/css/main.css">
 <!--===============================================================================================-->
+	{{-- CUSTOM CSS --}}
+	<link rel="stylesheet" type="text/css" href="/colorliblogin/css/mycustom.css">
 </head>
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('/colorliblogin/images/img-01.jpg');">
-			<div class="wrap-login100 p-t-190 p-b-30">
+		<div class="container-login100 gambar-bg">
+			<div class="wrap-login100 p-b-30 batas-atas">
 				<form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
 					@csrf
 					<div class="login100-form-avatar">
@@ -83,7 +85,7 @@
 					</div>
 
 					<span class="login100-form-title p-t-20 p-b-45">
-						GIB Admin
+						PASKAS
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
@@ -108,16 +110,16 @@
 						</button>
 					</div>
 
-					<div class="text-center w-full p-t-25 p-b-230">
+					<div class="text-center w-full p-t-25 p-b-140">
 						<a href="#" class="txt1">
-							Forgot Your Password?
+							Lupa Password?
 						</a>
 					</div>
 
-					<div class="text-center w-full">
-						<a class="txt1" href="{{ route('register') }}">
-							Create new account
-							<i class="fa fa-long-arrow-right"></i>						
+					<div class="text-center pt-3 w-full daftar-box">
+						<p class="pb-2 txt1">Belum jadi member?</p>
+						<a class="button-daftar mt-2" href="{{ route('register') }}">
+							DAFTAR SEKARANG!
 						</a>
 					</div>
 				</form>

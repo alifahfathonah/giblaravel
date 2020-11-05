@@ -65,11 +65,13 @@
 	<link rel="stylesheet" type="text/css" href="/colorliblogin/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/colorliblogin/css/main.css">
 <!--===============================================================================================-->
+	{{-- CUSTOM CSS --}}
+	<link rel="stylesheet" type="text/css" href="/colorliblogin/css/mycustom.css">
 </head>
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('/colorliblogin/images/img-01.jpg');">
+		<div class="container-login100 gambar-bg">
 			<div class="wrap-login100 p-t-50 p-b-30">
 				<form class="login100-form validate-form" method="POST" action="{{ route('register') }}">
 					@csrf
@@ -78,11 +80,11 @@
 					</div>
 
 					<span class="login100-form-title p-t-20 p-b-45">
-                        Register Now 
+                        Isi form singkat dibawah untuk menjadi calon member!
                     </span>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
-						<input class="input100" type="name" name="name" placeholder="Username" required value="{{ old('name') }}">
+						<input class="input100" type="name" name="name" placeholder="Nama Lengkap" required value="{{ old('name') }}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user"></i>
@@ -111,7 +113,7 @@
                     </div>
                     
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
-						<input class="input100" type="password" name="password_confirmation" placeholder="Password confirm" required>
+						<input class="input100" type="password" name="password_confirmation" placeholder="Konfirmasi Password" required>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock"></i>
@@ -134,7 +136,7 @@
 					<div class="text-center w-full">
 						<a class="txt1" href="{{ route('login') }}">
 							<i class="fa fa-long-arrow-left"></i>						
-							Already have an account?
+							Sudah menjadi member?
 						</a>
 					</div>
 				</form>

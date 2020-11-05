@@ -1,0 +1,79 @@
+.gambar-bg {
+    background-image: url("https://wallpaperheart.com/wp-content/uploads/2018/08/abstract-wallpaper-hd-9.jpg");
+}
+.daftar-box {
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    border-radius: 150px;
+}
+
+.batas-atas {
+    padding-top: 140px;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+@media only screen and (max-width: 768px) {
+    .batas-atas {
+        padding-top: 30px;
+    }
+}
+
+.button-daftar {
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #e0e0e0;
+
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: tomato;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+
+    position: relative;
+    z-index: 1;
+}
+
+.button-daftar::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    top: 0;
+    left: 0;
+    background: tomato;
+    background: -webkit-linear-gradient(left, tomato, orange);
+    background: -o-linear-gradient(left, tomato, orange);
+    background: -moz-linear-gradient(left, tomato, orange);
+    background: linear-gradient(left, tomato, orange);
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    opacity: 0;
+}
+
+.button-daftar:hover {
+    background: transparent;
+    color: #fff;
+}
+
+.button-daftar:hover:before {
+    opacity: 1;
+}
