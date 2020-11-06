@@ -2,17 +2,10 @@
 
 @section('title', 'Dashboard')    
 
-@section('data-color', 'bg-chartbg')    
+@section('data-color', 'bg-gradient-x-purple-blue')    
 
 @section('content')
           <!-- Chart -->
-          <div class="row match-height">
-              <div class="col-12">
-                  <div class="">
-                      <div id="gradient-line-chart1" class="height-250 GradientlineShadow1"></div>
-                  </div>
-              </div>
-          </div>
           <!-- Chart -->
           <!-- eCommerce statistic -->
           <div class="row">

@@ -70,7 +70,7 @@
     <title>@yield('title') | GIB Kader </title>
     @include('layouts.link')
   </head>
-  <body class="horizontal-layout horizontal-menu content-right-sidebar  fixed-navbar" data-open="click" data-menu="horizontal-menu" data-color="@yield('data-color')" data-col="content-right-sidebar">
+  <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="@yield('data-color')" data-col="2-columns">
 
     <!-- fixed-top-->
     @include('layouts.nav')
@@ -78,27 +78,13 @@
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
     {{-- SIDEBAR --}}
-    {{-- @include('layouts.sidebar') --}}
+    @include('layouts.sidebar')
     {{-- /SIDEBAR --}}
 
     <div class="app-content content">
       <div class="content-wrapper">
         <div class="content-wrapper-before"></div>
-        <div class="content-header row">
-            <div class="content-header-left col-md-7 col-12 mb-1">
-                <h2 class="content-header-title">Member</h2>
-            </div>
-            <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-5 col-12">
-                <div class="breadcrumb-wrapper col-12">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active">Card Documetation
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </div>
+        <div class="content-header row"></div>
         <div class="content-body">
           @yield('content')
         </div>
