@@ -1,0 +1,11 @@
+.jumlah-member-count-box {
+    height: 100%;
+    align-content: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+.admin-sidebar-dash-active span,
+.admin-sidebar-dash-active i {
+    color: rgb(250, 98, 107) !important;
+}

@@ -16,42 +16,50 @@ class GraduateSeeder extends Seeder
     {
         
         DB::table('graduates')->truncate();
+
+        DB::table('graduates')->insert([
+            'name' => 'SD/MI/sederajat',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);   
+
+        DB::table('graduates')->insert([
+            'name' => 'SMP/MTs/Sederajat',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);   
+
+        DB::table('graduates')->insert([
+            'name' => 'SMA/SMK/MA/sederajat',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);   
+
+        $dnum = 1; 
         
-        for ($i=0; $i < 3; $i++) {
-            $num = 1; 
+        for ($i=0; $i < 3; $i++) {   
             DB::table('graduates')->insert([
-                'name' => 'S' . $num++,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);   
-            DB::table('graduates')->insert([
-                'name' => 'D' . $num++,
+                'name' => 'D' . $dnum++,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);   
         }
+
         DB::table('graduates')->insert([
             'name' => 'D4',
             'created_at' => now(),
             'updated_at' => now(),
         ]);   
 
-        DB::table('graduates')->insert([
-            'name' => 'SMA',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);   
+        $snum = 1; 
 
-        DB::table('graduates')->insert([
-            'name' => 'SMP',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);   
+        for ($i=0; $i < 3; $i++) {
+            DB::table('graduates')->insert([
+                'name' => 'S' . $snum++,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);   
+        }
 
-        DB::table('graduates')->insert([
-            'name' => 'SD',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);   
     }
 }

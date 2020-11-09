@@ -67,10 +67,13 @@
     <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
     <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
-    <title>@yield('title') | GIB Kader </title>
+    <title>@yield('title') | GIB Kader Admin </title>
     @include('layouts.link')
+    @if( request()->routeIs('dashboard') )
+        <link rel="stylesheet" type="text/css" href="/chameleon/theme-assets/css/pages/dashboard-ecommerce.css">
+    @endif
   </head>
-  <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="@yield('data-color')" data-col="2-columns">
+  <body class="vertical-layout vertical-menu content-right-sidebar fixed-navbar" data-open="hover" data-menu="vertical-menu" data-color="@yield('data-color')" data-col="content-right-sidebar">
 
     <!-- fixed-top-->
     @include('layouts.nav')
@@ -81,15 +84,8 @@
     @include('layouts.sidebar')
     {{-- /SIDEBAR --}}
 
-    <div class="app-content content">
-      <div class="content-wrapper">
-        <div class="content-wrapper-before"></div>
-        <div class="content-header row"></div>
-        <div class="content-body">
-          @yield('content')
-        </div>
-      </div>
-    </div>
+    @yield('content')
+          
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
 

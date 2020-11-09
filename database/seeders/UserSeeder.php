@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -35,5 +37,16 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        $fake = Factory::create('id_ID');
+        for ($i=0; $i < 100; $i++) { 
+            DB::table('users')->insert([
+                'name' => $fake->firstName() . ' ' . $fake->lastName(),
+                'email' => Str::lower($fake->firstName() . $fake->lastName() . rand(1,99) . '@gmail.com'),
+                'password' => Hash::make('member'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]); 
+        }
     }
 }

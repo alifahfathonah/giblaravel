@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\Master\SpecializationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');    
+    Route::get('/members', [MemberController::class, 'index'])->name('members'); 
+    Route::prefix('masters')->name('masters.')->group(function () {
+        Route::resource('/specializations', SpecializationController::class);
+    });   
+});

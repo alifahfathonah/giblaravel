@@ -80,16 +80,16 @@
 			<div class="wrap-login100 p-b-30 batas-atas">
 				<form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
 					@csrf
-					<div class="login100-form-avatar">
-						<img src="/chameleon/theme-assets/images/logo/logo.png" alt="AVATAR">
+					<div class="login100-form-avatar" style="overflow: visible;">
+						<img src="https://infaqberasjogja.com/wp-content/uploads/2020/05/4-o.png" style="height: 250px;width: auto;transform: translate(-120px,-70px)" alt="AVATAR">
 					</div>
 
 					<span class="login100-form-title p-t-20 p-b-45">
-						PASKAS
+						{{-- PASKAS --}}
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
-						<input class="input100" type="email" name="email" placeholder="Email" required>
+						<input class="input100" type="email" name="email" placeholder="Email" required value="{{ old('email') }}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope"></i>
@@ -103,6 +103,12 @@
 							<i class="fa fa-lock"></i>
 						</span>
 					</div>
+
+                    @error('email')
+                        <div class="w-100 text-center mb-3">
+                            <small class="text-white">Email atau password yang diisikan salah</small>
+                        </div>
+					@enderror
 
 					<div class="container-login100-form-btn p-t-10">
 						<button class="login100-form-btn" type="submit">

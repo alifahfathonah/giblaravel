@@ -70,7 +70,7 @@
     <title>@yield('title') | GIB Kader </title>
     @include('layouts.link')
   </head>
-  <body class="horizontal-layout horizontal-menu content-right-sidebar  fixed-navbar" data-open="click" data-menu="horizontal-menu" data-color="@yield('data-color')" data-col="content-right-sidebar">
+  <body class="vertical-layout vertical-menu content-right-sidebar  fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="@yield('data-color')" data-col="content-right-sidebar">
 
     <!-- fixed-top-->
     @include('layouts.nav')
