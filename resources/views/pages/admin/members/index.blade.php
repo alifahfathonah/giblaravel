@@ -29,7 +29,9 @@
           <div class="row match-height">
               <div class="col-12">
                   <div class="">
-                      <a href="#" class="btn btn-lg btn-success my-3"><span class="d-none d-lg-inline">Tambah Member </span><i class="ft-user-plus"></i></a>
+                        <a href="#" class="btn btn-lg btn-success my-3">
+                            <i class="ft-plus" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Tambah Data </span>
+                        </a>
                   </div>
               </div>
           </div>

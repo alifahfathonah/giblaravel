@@ -1,6 +1,20 @@
+@php
+    $isEdit = isset($data);
+    $method = $isEdit ? method_field('PUT') : ''; 
+    $route = $isEdit ? route('masters.specializations.update', $data->id) : route('masters.specializations.store');
+@endphp
+
 @extends('layouts.admin')
 
-@section('title', 'Dashboard')    
+@if ($isEdit)
+    
+  @section('title', 'Master - Peminatan ~Edit')    
+
+@else
+
+  @section('title', 'Master - Peminatan ~Tambah')    
+    
+@endif
 
 @section('data-color', 'bg-gradient-x-red-pink') 
 
@@ -20,7 +34,7 @@
                   </li>
                   <li class="breadcrumb-item"><a href="{{ route('masters.specializations.index') }}">Peminatan</a>
                   </li>
-                  <li class="breadcrumb-item active">Tambah
+                  <li class="breadcrumb-item active">{{ $isEdit ? 'Edit' : 'Tambah' }}
                   </li>
                 </ol>
               </div>
@@ -34,7 +48,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Tambah Data</h4>
+                        <h4 class="card-title">{{ $isEdit ? 'Edit' : 'Tambah' }} Data</h4>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                         <div class="heading-elements">
                             <ul class="list-inline mb-0">
@@ -45,13 +59,13 @@
                     <div class="card-content collapse show">
                         <div class="card-body">
                             
-                            <form class="form" action="{{ route('masters.specializations.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
+                            <form class="form" action="{{ $route }}" method="POST" enctype="multipart/form-data">
+                                @csrf {{ $method }}
                                 <div class="form-body">
 
                                     <div class="form-group">
                                         <label for="nameInput">Nama</label>
-                                        <input type="text" id="nameInput" class="form-control round" placeholder="nama peminatan" name="name">
+                                        <input type="text" id="nameInput" class="form-control round" placeholder="nama peminatan" name="name" value="{{ $isEdit ? $data->name : '' }}">
                                     </div>
 
                                 </div>
@@ -61,7 +75,7 @@
                                         <i class="ft-arrow-left"></i> Kembali
                                     </a>
                                     <button type="submit" class="btn btn-success">
-                                        <i class="la la-check-square-o"></i> Submit
+                                        <i class="la la-check-square-o"></i> {{ $isEdit ? 'Confirm' : 'Submit' }}
                                     </button>
                                 </div>
                             </form>

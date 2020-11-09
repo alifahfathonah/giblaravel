@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard')    
+@section('title', 'Master - Peminatan')    
 
 @section('data-color', 'bg-gradient-x-red-pink') 
 
@@ -42,7 +42,17 @@
                     </div>
                     <div class="card-content collapse show">
                         <div class="card-body">
-                            <a href="{{ route('masters.specializations.create') }}" class="btn btn-md btn-primary"><span class="d-none d-lg-inline">Tambah Member </span><i class="ft-user-plus"></i></a>
+                            <div class="d-flex justify-content-between">
+                                
+                                <a href="{{ route('masters.specializations.create') }}" class="btn btn-md btn-primary">
+                                    <i class="ft-plus" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Tambah Data</span>
+                                </a>
+                                
+                                <a href="{{ route('masters.specializations.create') }}" class="btn btn-md btn-info">
+                                    <i class="ft-trash-2" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Lihat Data Sampah</span>
+                                </a>
+
+                            </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table">
@@ -60,11 +70,11 @@
                                             <th scope="row">{{ $data->id }}</th>
                                             <td>{{ $data->name }}</td>
                                             <td class="text-right">
-                                                <a href="" class="btn btn-sm btn-warning"><i class="ft-edit"></i> <span class="d-none d-xl-inline">Edit</span></a>
+                                                <a href="{{ route('masters.specializations.edit', $data->id) }}" class="btn btn-sm btn-warning"><i class="ft-edit"></i> <span class="d-none d-xl-inline">Edit</span></a>
                                                 
                                                 <form action="{{ route('masters.specializations.destroy', $data->id) }}" class="d-inline" method="POST">
                                                     @csrf @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger"><i class="ft-trash-2"></i> <span class="d-none d-xl-inline">Hapus</span></button>
+                                                    <button type="submit" class="btn btn-sm btn-danger"><i class="ft-trash"></i> <span class="d-none d-xl-inline">Hapus</span></button>
                                                 </form>
 
                                             </td>
