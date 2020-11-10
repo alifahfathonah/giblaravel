@@ -44,7 +44,7 @@ class SpecializationController extends Controller
     {
         $this->model::create($request->all());
 
-        return redirect()->route('masters.specializations.index');
+        return redirect()->back();
     }
 
     /**
@@ -53,9 +53,11 @@ class SpecializationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        //showTrashedData
+        $datas = $this->model->onlyTrashed()->paginate(10);
+        return view('pages.admin.masters.specializations.trashed', compact('datas'));
     }
 
     /**
@@ -85,7 +87,7 @@ class SpecializationController extends Controller
         
         $this->model::findOrFail($id)->update($request->all());
 
-        return redirect()->route('masters.specializations.index');
+        return redirect()->back();
 
     }
 
@@ -99,6 +101,12 @@ class SpecializationController extends Controller
     {
         $this->model::findOrFail($id)->delete();
 
-        return redirect()->route('masters.specializations.index');
+        return redirect()->back();
+    }
+
+    public function restore($id)
+    {
+        $this->model::onlyTrashed()->find($id)->restore();
+        return redirect()->back();
     }
 }

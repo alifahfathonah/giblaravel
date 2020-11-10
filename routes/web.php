@@ -21,5 +21,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/members', [MemberController::class, 'index'])->name('members'); 
     Route::prefix('masters')->name('masters.')->group(function () {
         Route::resource('/specializations', SpecializationController::class);
+        Route::get('/specializations/{id}/restore', [SpecializationController::class, 'restore'])->name('specializations.restore');
     });   
 });

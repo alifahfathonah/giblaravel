@@ -29,9 +29,6 @@
           <div class="row match-height">
               <div class="col-12">
                   <div class="">
-                        <a href="#" class="btn btn-lg btn-success my-3">
-                            <i class="ft-plus" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Tambah Data </span>
-                        </a>
                   </div>
               </div>
           </div>
@@ -55,6 +52,10 @@
                       </div>
                       <div class="card-content p-2">
                          
+                        <a href="#" class="btn btn-md btn-primary mb-2">
+                            <i class="ft-plus" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Tambah Data </span>
+                        </a>
+
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead class="thead-dark">
