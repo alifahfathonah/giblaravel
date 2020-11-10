@@ -67,7 +67,7 @@
                                             <td class="text-right">
                                                 <a href="{{ route('masters.specializations.restore', $data->id) }}" class="btn btn-sm btn-success"><i class="ft-repeat"></i> <span class="d-none d-xl-inline">Restore</span></a>
                                                 
-                                                <form action="{{ route('masters.specializations.destroy', $data->id) }}" class="d-inline" method="POST">
+                                                <form action="{{ route('masters.specializations.force-delete', $data->id) }}" class="d-inline" method="POST">
                                                     @csrf @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger"><i class="ft-trash"></i> <span class="d-none d-xl-inline">Hapus Permanent</span></button>
                                                 </form>

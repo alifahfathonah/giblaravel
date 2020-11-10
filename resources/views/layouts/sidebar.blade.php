@@ -14,15 +14,15 @@
             <ul class="menu-content">
               <li class="{{ request()->routeIs('masters.specializations*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('masters.specializations.index') }}">Peminatan</a>
               </li>
-              <li class=""><a class="menu-item" href="#">Pendidikan</a>
+              <li class="{{ request()->routeIs('masters.graduates*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('masters.graduates.index') }}">Pendidikan</a>
               </li>
-              <li class=""><a class="menu-item" href="#">Jurusan</a>
+              <li class="{{ request()->routeIs('masters.majors*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('masters.majors.index') }}">Jurusan Pendidikan</a>
               </li>
-              <li class=""><a class="menu-item" href="#">Pekerjaan</a>
+              <li class="{{ request()->routeIs('masters.jobs*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('masters.jobs.index') }}">Pekerjaan</a>
               </li>
-              <li class=""><a class="menu-item" href="#">Amanah</a>
+              <li class="{{ request()->routeIs('masters.amanah*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('masters.amanah.index') }}">Amanah</a>
               </li>
-              <li class=""><a class="menu-item" href="#">Divisi</a>
+              <li class="{{ request()->routeIs('masters.divisions*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('masters.divisions.index') }}">Divisi</a>
               </li>
             </ul>
           </li>

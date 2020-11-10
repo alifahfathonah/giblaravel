@@ -1,18 +1,18 @@
 @php
     $isEdit = isset($data);
     $method = $isEdit ? method_field('PUT') : ''; 
-    $route = $isEdit ? route('masters.specializations.update', $data->id) : route('masters.specializations.store');
+    $route = $isEdit ? route('masters.divisions.update', $data->id) : route('masters.divisions.store');
 @endphp
 
 @extends('layouts.admin')
 
 @if ($isEdit)
     
-  @section('title', 'Master - Peminatan ~Edit')    
+  @section('title', 'Master - Divisi ~Edit')    
 
 @else
 
-  @section('title', 'Master - Peminatan ~Tambah')    
+  @section('title', 'Master - Divisi ~Tambah')    
     
 @endif
 
@@ -24,7 +24,7 @@
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">Peminatan</h3>
+            <h3 class="content-header-title">Divisi</h3>
           </div>
           <div class="content-header-right col-md-8 col-12">
             <div class="breadcrumbs-top float-md-right">
@@ -32,7 +32,7 @@
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a>
                   </li>
-                  <li class="breadcrumb-item"><a href="{{ route('masters.specializations.index') }}">Peminatan</a>
+                  <li class="breadcrumb-item"><a href="{{ route('masters.divisions.index') }}">Divisi</a>
                   </li>
                   <li class="breadcrumb-item active">{{ $isEdit ? 'Edit' : 'Tambah' }}
                   </li>
@@ -65,13 +65,13 @@
 
                                     <div class="form-group">
                                         <label for="nameInput">Nama</label>
-                                        <input type="text" id="nameInput" class="form-control round" placeholder="nama peminatan" name="name" value="{{ $isEdit ? $data->name : '' }}" required>
+                                        <input type="text" id="nameInput" class="form-control round" placeholder="nama divisi" name="name" value="{{ $isEdit ? $data->name : '' }}" required>
                                     </div>
 
                                 </div>
 
                                 <div class="form-actions">
-                                    <a href="{{ route('masters.specializations.index') }}" class="btn btn-warning mr-1 text-white">
+                                    <a href="{{ route('masters.divisions.index') }}" class="btn btn-warning mr-1 text-white">
                                         <i class="ft-arrow-left"></i> Kembali
                                     </a>
                                     <button type="submit" class="btn btn-success">
