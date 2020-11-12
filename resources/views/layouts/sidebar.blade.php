@@ -28,12 +28,24 @@
           </li>
           <li class="nav-item has-sub {{ request()->routeIs('members*') ? 'open' : '' }}"><a href="#"><i class="ft-users"></i><span class="menu-title" data-i18n="">Kader</span></a>
             <ul class="menu-content">
-              <li class="{{ request()->routeIs('members') ? 'active' : '' }}"><a class="menu-item" href="{{ route('members') }}">List Kader</a>
+              <li class="{{ request()->routeIs('members.index') ? 'active' : '' }}"><a class="menu-item" href="{{ route('members.index') }}">List Kader</a>
               </li>
-              <li class=""><a class="menu-item" href="documentation-changelog.html">Add Kader</a>
+              <li class="{{ request()->routeIs('members.create') ? 'active' : '' }}"><a class="menu-item" href="{{ route('members.create') }}">Tambah Kader</a>
               </li>
-              <li class=""><a class="menu-item" href="documentation-notes.html">Trashed Data Kader</a>
+
+              @if (request()->routeIs('members.edit*'))
+                <li class="{{ request()->routeIs('members.edit*') ? 'active' : '' }}"><a class="menu-item" href="#">Edit Member</a>
+                </li>
+              @endif
+
+              <li class="{{ request()->routeIs('members.view-trashed') ? 'active' : '' }}"><a class="menu-item" href="{{ route('members.view-trashed') }}">Data Sampah</a>
               </li>
+              
+              @if (request()->routeIs('members.show*'))
+                <li class="{{ request()->routeIs('members.show*') ? 'active' : '' }}"><a class="menu-item" href="#">Detail Member</a>
+                </li>
+              @endif
+
             </ul>
           </li>
           

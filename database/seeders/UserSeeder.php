@@ -40,9 +40,12 @@ class UserSeeder extends Seeder
 
         $fake = Factory::create('id_ID');
         for ($i=0; $i < 100; $i++) { 
+        $fakeFirstName = $fake->firstName();
+        $fakeLastName = $fake->lastName();
             DB::table('users')->insert([
-                'name' => $fake->firstName() . ' ' . $fake->lastName(),
-                'email' => Str::lower($fake->firstName() . $fake->lastName() . rand(1,99) . '@gmail.com'),
+                'fullname' => $fakeFirstName . ' ' . $fakeLastName,
+                'name' => $fakeFirstName,
+                'email' => Str::lower($fakeFirstName . $fakeLastName . rand(1,99) . '@gmail.com'),
                 'password' => Hash::make('member'),
                 'created_at' => now(),
                 'updated_at' => now(),

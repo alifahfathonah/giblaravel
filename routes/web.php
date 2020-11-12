@@ -1,14 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\Master\JobController;
+use App\Http\Controllers\Admin\Master\MajorController;
 use App\Http\Controllers\Admin\Master\AmanahController;
 use App\Http\Controllers\Admin\Master\DivisionController;
 use App\Http\Controllers\Admin\Master\GraduateController;
-use App\Http\Controllers\Admin\Master\JobController;
-use App\Http\Controllers\Admin\Master\MajorController;
 use App\Http\Controllers\Admin\Master\SpecializationController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MemberController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');    
-    Route::get('/members', [MemberController::class, 'index'])->name('members'); 
+
+    Route::resource('/members', MemberController::class);
+    Route::get('/members/show/trashed', [MemberController::class, 'viewTrashed'])->name('members.view-trashed');
+    Route::get('/members/{id}/restore', [MemberController::class, 'restore'])->name('members.restore');
+    Route::delete('/members/{id}/force-delete', [MemberController::class, 'forceDelete'])->name('members.force-delete');
+    
     Route::prefix('masters')->name('masters.')->group(function () {
         Route::resource('/specializations', SpecializationController::class);
         Route::get('/specializations/{id}/restore', [SpecializationController::class, 'restore'])->name('specializations.restore');

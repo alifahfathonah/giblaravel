@@ -20,8 +20,7 @@
                   </li>
                   <li class="breadcrumb-item"><a href="{{ route('members.index') }}">Member</a>
                   </li>
-                  <li class="breadcrumb-item active">List
-                  </li>
+                  <li class="breadcrumb-item active">Sampah
                 </ol>
               </div>
             </div>
@@ -34,7 +33,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">List Data</h4>
+                        <h4 class="card-title">List Data Sampah</h4>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                         <div class="heading-elements">
                             <ul class="list-inline mb-0">
@@ -46,13 +45,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 
-                                <a href="{{ route('members.create') }}" class="btn btn-md btn-primary">
-                                    <i class="ft-plus" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Tambah Data</span>
-                                </a>
-                                
-                                <a href="{{ route('members.view-trashed') }}" class="btn btn-md btn-info">
-                                    <i class="ft-trash-2" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Lihat Data Sampah</span>
-                                </a>
+
 
                             </div>
                         </div>
@@ -61,8 +54,7 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Nama Lengkap</th>
-                                        <th scope="col">Nama Panggilan</th>
+                                        <th scope="col">Nama</th>
                                         <th scope="col" class="text-right">Aksi</th>
                                     </tr>
                                 </thead>
@@ -72,14 +64,12 @@
                                         <tr>
                                             <th scope="row">{{ $data->id }}</th>
                                             <td>{{ $data->name }}</td>
-                                            <td>{{ $data->nickname }}</td>
                                             <td class="text-right">
-                                                <a href="{{ route('members.show', $data->id) }}" class="btn btn-sm btn-info"><i class="ft-eye"></i> <span class="d-none d-xl-inline">Lihat</span></a>
-                                                <a href="{{ route('members.edit', $data->id) }}" class="btn btn-sm btn-warning"><i class="ft-edit"></i> <span class="d-none d-xl-inline">Edit</span></a>
+                                                <a href="{{ route('members.restore', $data->id) }}" class="btn btn-sm btn-success"><i class="ft-repeat"></i> <span class="d-none d-xl-inline">Restore</span></a>
                                                 
-                                                <form action="{{ route('members.destroy', $data->id) }}" class="d-inline" method="POST">
+                                                <form action="{{ route('members.force-delete', $data->id) }}" class="d-inline" method="POST">
                                                     @csrf @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger"><i class="ft-trash"></i> <span class="d-none d-xl-inline">Hapus</span></button>
+                                                    <button type="submit" class="btn btn-sm btn-danger"><i class="ft-trash"></i> <span class="d-none d-xl-inline">Hapus Permanent</span></button>
                                                 </form>
 
                                             </td>
@@ -88,7 +78,12 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="card-body">{{ $datas->links() }}</div>
+                        <div>{{ $datas->links() }}</div>
+                        <div class="card-body">
+                            <a href="{{ route('members.index') }}" class="btn btn-warning mr-1 text-white">
+                                <i class="ft-arrow-left"></i> Kembali
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

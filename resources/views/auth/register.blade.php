@@ -84,10 +84,18 @@
                     </span>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
-						<input class="input100" type="name" name="name" placeholder="Nama Lengkap" required value="{{ old('name') }}">
+						<input class="input100" type="text" name="fullname" placeholder="Nama Lengkap" required value="{{ old('fullname') }}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user"></i>
+						</span>
+					</div>
+					
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
+						<input class="input100" type="text" name="name" placeholder="Nama Panggilan" required value="{{ old('name') }}">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-tag"></i>
 						</span>
                     </div>
                     

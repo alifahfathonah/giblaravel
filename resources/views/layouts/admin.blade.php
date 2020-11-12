@@ -73,7 +73,7 @@
         <link rel="stylesheet" type="text/css" href="/chameleon/theme-assets/css/pages/dashboard-ecommerce.css">
     @endif
   </head>
-  <body class="vertical-layout vertical-menu content-right-sidebar fixed-navbar" data-open="hover" data-menu="vertical-menu" data-color="@yield('data-color')" data-col="content-right-sidebar">
+  <body class="vertical-layout vertical-menu content-right-sidebar fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="@yield('data-color')" data-col="content-right-sidebar">
 
     <!-- fixed-top-->
     @include('layouts.nav')
