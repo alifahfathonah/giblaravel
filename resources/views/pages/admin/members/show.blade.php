@@ -8,11 +8,11 @@
 
 @if ($isEdit)
     
-  @section('title', 'Master - Member ~Edit')    
+  @section('title', 'Member ~Edit')    
 
 @else
 
-  @section('title', 'Master - Member ~Tambah')    
+  @section('title', 'Member ~Tambah')    
     
 @endif
 

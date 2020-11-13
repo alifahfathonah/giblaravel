@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('phone_number')->nullable();
             $table->string('place_of_birth')->nullable();
             $table->date('date_of_birth')->nullable();
-            $table->enum('marital_status', ['Kawin', 'Belum Kawin', 'Cerai Hidup', 'Cerai Mati'])->nullable();
+            $table->enum('marital_status', ['KAWIN', 'BELUM_KAWIN', 'CERAI_HIDUP', 'CERAI_MATI'])->nullable();
             $table->enum('blood_type', ['A', 'B', 'AB', 'O'])->nullable();
             $table->foreignId('province_id')->nullable();
             $table->foreignId('regency_id')->nullable();
@@ -36,7 +36,6 @@ class CreateUsersTable extends Migration
             $table->string('hobby')->nullable();
             $table->foreignId('specialization_id')->nullable();
             $table->foreignId('division_id')->nullable();
-            $table->enum('member_status', ['Calon', 'Junior', 'Senior'])->default('Calon');
 
             $table->softDeletes();
             $table->rememberToken();
