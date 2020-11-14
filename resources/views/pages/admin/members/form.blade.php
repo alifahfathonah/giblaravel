@@ -92,14 +92,14 @@
                                     <div class="col-md-6">
                                       <div class="form-group">
                                           <label for="emailInput">Email</label>
-                                          <input type="text" id="emailInput" class="form-control round" placeholder="email" name="email" value="{{ $isEdit ? $data->email : '' }}" required>
+                                          <input type="email" id="emailInput" class="form-control round" placeholder="email" name="email" value="{{ $isEdit ? $data->email : '' }}" required>
                                       </div>
                                     </div>
                                     
                                     <div class="col-md-6">
                                       <div class="form-group">
                                           <label for="passwordInput">Password</label>
-                                          <input type="text" id="passwordInput" class="form-control round" placeholder="password" name="password" required>
+                                          <input type="password" id="passwordInput" class="form-control round" placeholder="password" name="password" required>
                                       </div>
                                     </div>
                                     
@@ -132,7 +132,7 @@
                                     <div class="col-md-12">
                                       <div class="form-group">
                                           <label for="phoneInput">Nomor HP</label>
-                                          <input type="text" id="phoneInput" class="form-control round" placeholder="nomor hp" name="phone_number" value="{{ $isEdit ? $data->phone_number : '' }}" required>
+                                          <input type="number" id="phoneInput" class="form-control round" placeholder="nomor hp" name="phone_number" value="{{ $isEdit ? $data->phone_number : '' }}" required>
                                       </div>
                                     </div>
 
@@ -186,7 +186,7 @@
                                     </div>
                                     <div class="col-md-6">
                                       <div class="form-group skin skin-flat">
-                                          <label for="roleInput">Kabupaten</label>
+                                          <label for="regency_id">Kabupaten</label>
                                           <select name="regency_id" id="regency_id" class="form-control round" v-if="cities" v-model="cities_id">
                                             <option v-for="city in cities" :value="city.id">@{{ city.name }}</option>                                                
                                           </select>
@@ -198,8 +198,8 @@
                                     
                                     <div class="col-md-12">
                                       <div class="form-group skin skin-flat">
-                                          <label for="roleInput">Alamat Lengkap</label>
-                                          <textarea class="form-control round" name="" id="" rows="7"></textarea>
+                                          <label for="addressArea">Alamat Lengkap</label>
+                                          <textarea class="form-control round" name="address" id="addressArea" rows="7"></textarea>
                                       </div>
                                     </div>
 
@@ -270,9 +270,9 @@
 
                                     <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="placeOfBirthInput">Upload Foto Profil</label>
+                                          <label for="photoInput">Upload Foto Profil</label>
                                           <div class="custom-file">
-                                            <input type="file" id="placeOfBirthInput" class="form-control round" placeholder="foto" name="place_of_birth" value="" required>
+                                            <input type="file" id="photoInput" class="form-control round" placeholder="foto" name="photo">
                                           </div>
                                       </div>
                                     </div>

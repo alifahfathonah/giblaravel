@@ -19,7 +19,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $datas = $this->model::orderBy('id')->paginate(10);
+        $datas = $this->model::orderByDesc('created_at')->paginate(10);
         return view($this->viewRoute.'.index', [
             'datas' => $datas,
         ]);
