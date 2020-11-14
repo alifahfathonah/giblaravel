@@ -29,6 +29,10 @@
 
 @section('data-color', 'bg-gradient-x-blue-cyan') 
 
+@push('after-link')
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">    
+@endpush
+
 @section('content')
     <div class="app-content content">
       <div class="content-wrapper">
@@ -82,21 +86,21 @@
                                       </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                       <div class="form-group">
                                           <label for="nameInput">Nama Panggilan</label>
                                           <input type="text" id="nameInput" class="form-control round" placeholder="nama panggilan" name="name" value="{{ $isEdit ? $data->name : '' }}" required>
                                       </div>
                                     </div>
                                     
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                       <div class="form-group">
                                           <label for="emailInput">Email</label>
                                           <input type="email" id="emailInput" class="form-control round" placeholder="email" name="email" value="{{ $isEdit ? $data->email : '' }}" required>
                                       </div>
                                     </div>
                                     
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                       <div class="form-group">
                                           <label for="passwordInput">Password</label>
                                           <input type="password" id="passwordInput" class="form-control round" placeholder="password" name="password" required>
@@ -110,6 +114,13 @@
                                       </div>
                                     </div> --}}
                                     
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                          <label for="phoneInput">Nomor HP</label>
+                                          <input type="number" id="phoneInput" class="form-control round" placeholder="nomor hp" name="phone_number" value="{{ $isEdit ? $data->phone_number : '' }}" required>
+                                      </div>
+                                    </div>
+
                                     <div class="col-md-3">
                                       <div class="form-group skin skin-flat">
                                           <label for="roleInput">Role</label>
@@ -126,13 +137,6 @@
                                             <option value="L">Laki - Laki</option>
                                             <option value="P">Perempuan</option>
                                           </select>
-                                      </div>
-                                    </div>
-                                    
-                                    <div class="col-md-12">
-                                      <div class="form-group">
-                                          <label for="phoneInput">Nomor HP</label>
-                                          <input type="number" id="phoneInput" class="form-control round" placeholder="nomor hp" name="phone_number" value="{{ $isEdit ? $data->phone_number : '' }}" required>
                                       </div>
                                     </div>
 
@@ -203,7 +207,7 @@
                                       </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                       <div class="form-group skin skin-flat">
                                           <label for="graduateSelect">Pendidikan</label>
                                           <select name="graduate_id" id="graduateSelect" class="form-control round">
@@ -213,7 +217,7 @@
                                           </select>
                                       </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                       <div class="form-group skin skin-flat">
                                           <label for="majorSelect">Jurusan Pendidikan</label>
                                           <select name="major_id" id="majorSelect" class="form-control round">
@@ -224,7 +228,7 @@
                                       </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                       <div class="form-group skin skin-flat">
                                           <label for="jobSelect">Pekerjaan Sekarang</label>
                                           <select name="job_id" id="jobSelect" class="form-control round">
@@ -267,12 +271,20 @@
                                           </select>
                                       </div>
                                     </div>
-
-                                    <div class="col-md-6">
+                                    <div></div>
+                                    <div class=" col-md-6">
                                       <div class="form-group">
                                           <label for="photoInput">Upload Foto Profil</label>
-                                          <div class="custom-file">
-                                            <input type="file" id="photoInput" class="form-control round" placeholder="foto" name="photo">
+                                          <div class="fileinput fileinput-new form-control custom-upload-photo-box" data-provides="fileinput">
+                                            <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                                            <div>
+                                              <span class="btn btn-outline-secondary btn-file">
+                                                <span class="fileinput-new">Select image</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <input type="file" name="photo">
+                                              </span>
+                                              <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                            </div>
                                           </div>
                                       </div>
                                     </div>
@@ -343,5 +355,5 @@
     }
   });
 </script>
-    
+<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
 @endpush

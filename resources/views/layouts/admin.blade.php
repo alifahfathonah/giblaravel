@@ -72,6 +72,7 @@
     @if( request()->routeIs('dashboard') )
         <link rel="stylesheet" type="text/css" href="/chameleon/theme-assets/css/pages/dashboard-ecommerce.css">
     @endif
+    @stack('after-link')
   </head>
   <body class="vertical-layout vertical-menu content-right-sidebar fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="@yield('data-color')" data-col="content-right-sidebar">
 

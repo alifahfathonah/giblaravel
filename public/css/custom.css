@@ -48,3 +48,7 @@
 .admin-sidebar-dash-active i {
     color: rgb(250, 98, 107) !important;
 }
+
+.custom-upload-photo-box {
+    border: none !important;
+}
