@@ -92,5 +92,6 @@
     @include('layouts.footer')
 
     @include('layouts.script')
+    @stack('after-script')
   </body>
 </html>

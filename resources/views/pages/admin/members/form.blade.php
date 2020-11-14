@@ -70,7 +70,7 @@
                     <div class="card-content collapse show">
                         <div class="card-body">
                             
-                            <form class="form" action="{{ $route }}" method="POST" enctype="multipart/form-data">
+                            <form class="form" id="locations" action="{{ $route }}" method="POST" enctype="multipart/form-data">
                                 @csrf {{ $method }}
                                 <div class="form-body">
                                   
@@ -175,21 +175,23 @@
 
                                     <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="dateOfBirthInput">Provinsi</label>
-                                          <select name="graduate_id" id="graduateSelect" class="form-control round">
-                                            @foreach ($provinces as $province)
-                                              <option value="{{ $province->id }}">{{ $province->name }}</option>                                                
-                                            @endforeach
+                                          <label for="province_id">Provinsi</label>
+                                          <select name="province_id" id="province_id" class="form-control round" v-if="provinces" v-model="provinces_id">
+                                            <option v-for="province in provinces" :value="province.id">@{{ province.name }}</option>                                                
+                                          </select>
+                                          <select v-else class="form-control round">
+                                            <option value="">Gagal mengambil data</option>
                                           </select>
                                       </div>
                                     </div>
                                     <div class="col-md-6">
                                       <div class="form-group skin skin-flat">
                                           <label for="roleInput">Kabupaten</label>
-                                          <select name="graduate_id" id="graduateSelect" class="form-control round">
-                                            @foreach ($cities as $city)
-                                              <option value="{{ $city->id }}">{{ $city->name }}</option>                                                
-                                            @endforeach
+                                          <select name="regency_id" id="regency_id" class="form-control round" v-if="cities" v-model="cities_id">
+                                            <option v-for="city in cities" :value="city.id">@{{ city.name }}</option>                                                
+                                          </select>
+                                          <select v-else class="form-control round">
+                                            <option value="">Gagal mengambil data</option>
                                           </select>
                                       </div>
                                     </div>
@@ -300,3 +302,46 @@
       </div>
     </div>
 @endsection
+
+@push('after-script')
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script src="https://unpkg.com/vue-toasted"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  var locations = new Vue({
+    el: "#locations",
+    mounted() {
+      this.getProvincesData();
+    },
+    data: {
+      provinces: null,
+      cities: null,
+      provinces_id: null,
+      cities_id: null,
+    },
+    methods: {
+      getProvincesData() {
+        var self = this;
+        axios.get('{{ route("api-provinces") }}')
+          .then(function(response){
+            self.provinces = response.data;
+          });
+      },
+      getCitiesData() {
+        var self = this;
+        axios.get('{{ url('api/cities') }}/' + self.provinces_id)
+          .then(function(response){
+            self.cities = response.data;
+          });
+      },
+    },
+    watch: {
+      provinces_id: function(val, oldval) {
+        this.cities_id = null;
+        this.getCitiesData();
+      }
+    }
+  });
+</script>
+    
+@endpush

@@ -24,7 +24,7 @@ class GraduateSeeder extends Seeder
         ]);   
 
         DB::table('graduates')->insert([
-            'name' => 'SMP/MTs/Sederajat',
+            'name' => 'SMP/MTs/sederajat',
             'created_at' => now(),
             'updated_at' => now(),
         ]);   
