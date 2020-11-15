@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Laravolt\Indonesia\Models\Province;
 use Rackbeat\UIAvatars\HasAvatar;
 
 class User extends Authenticatable
@@ -28,8 +29,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'fullname',
         'name',
-        'nickname',
         'email',
         'password',
         'role',
@@ -85,5 +86,4 @@ class User extends Authenticatable
     public function getAvatar( $size = 64 ) {
         return $this->getGravatar( $this->email, $size );
     }
-
 }

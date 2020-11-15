@@ -82,28 +82,28 @@
                                     <div class="col-md-12">
                                       <div class="form-group">
                                           <label for="fullnameInput">Nama Lengkap</label>
-                                          <input type="text" id="fullnameInput" class="form-control round" placeholder="nama lengkap" name="fullname" value="{{ $isEdit ? $data->fullname : '' }}" required>
+                                          <input type="text" id="fullnameInput" class="form-control round" placeholder="nama lengkap" name="fullname" value="{{ $isEdit ? $data->fullname : 'Checking Check' }}" required>
                                       </div>
                                     </div>
 
                                     <div class="col-md-4">
                                       <div class="form-group">
                                           <label for="nameInput">Nama Panggilan</label>
-                                          <input type="text" id="nameInput" class="form-control round" placeholder="nama panggilan" name="name" value="{{ $isEdit ? $data->name : '' }}" required>
+                                          <input type="text" id="nameInput" class="form-control round" placeholder="nama panggilan" name="name" value="{{ $isEdit ? $data->name : 'Check' }}" required>
                                       </div>
                                     </div>
                                     
                                     <div class="col-md-4">
                                       <div class="form-group">
                                           <label for="emailInput">Email</label>
-                                          <input type="email" id="emailInput" class="form-control round" placeholder="email" name="email" value="{{ $isEdit ? $data->email : '' }}" required>
+                                          <input type="email" id="emailInput" class="form-control round" placeholder="email" name="email" value="{{ $isEdit ? $data->email : 'check@gmail.com' }}" required>
                                       </div>
                                     </div>
                                     
                                     <div class="col-md-4">
                                       <div class="form-group">
                                           <label for="passwordInput">Password</label>
-                                          <input type="password" id="passwordInput" class="form-control round" placeholder="password" name="password" required>
+                                          <input type="password" id="passwordInput" class="form-control round" placeholder="password" name="password" {{ $isEdit ? null : 'required' }} value="">
                                       </div>
                                     </div>
                                     
@@ -117,7 +117,7 @@
                                     <div class="col-md-6">
                                       <div class="form-group">
                                           <label for="phoneInput">Nomor HP</label>
-                                          <input type="number" id="phoneInput" class="form-control round" placeholder="nomor hp" name="phone_number" value="{{ $isEdit ? $data->phone_number : '' }}" required>
+                                          <input type="number" id="phoneInput" class="form-control round" placeholder="nomor hp" name="phone_number" value="{{ $isEdit ? $data->phone_number : '08522112314' }}">
                                       </div>
                                     </div>
 
@@ -125,7 +125,7 @@
                                       <div class="form-group skin skin-flat">
                                           <label for="roleInput">Role</label>
                                           <select name="" id="" class="form-control round">
-                                            <option value="MEMBER">Member</option>
+                                            <option value="MEMBER" selected>Member</option>
                                             <option value="ADMIN">Admin</option>
                                           </select>
                                       </div>
@@ -134,7 +134,7 @@
                                       <div class="form-group skin skin-flat">
                                           <label for="genderSelect">Jenis Kelamin</label>
                                           <select name="gender" id="genderSelect" class="form-control round">
-                                            <option value="L">Laki - Laki</option>
+                                            <option value="L" selected>Laki - Laki</option>
                                             <option value="P">Perempuan</option>
                                           </select>
                                       </div>
@@ -143,14 +143,14 @@
                                     <div class="col-md-6">
                                       <div class="form-group">
                                           <label for="placeOfBirthInput">Tempat Lahir</label>
-                                          <input type="text" id="placeOfBirthInput" class="form-control round" placeholder="tempat lahir" name="place_of_birth" value="{{ $isEdit ? $data->place_of_birth : '' }}" required>
+                                          <input type="text" id="placeOfBirthInput" class="form-control round" placeholder="tempat lahir" name="place_of_birth" value="{{ $isEdit ? $data->place_of_birth : 'SEMARANG' }}" >
                                       </div>
                                     </div>
 
                                     <div class="col-md-6">
                                       <div class="form-group">
                                           <label for="dateOfBirthInput">Tanggal Lahir</label>
-                                          <input type="date" id="dateOfBirthInput" class="form-control round" placeholder="Y-m-d" name="date_of_birth" value="{{ $isEdit ? $data->date_of_birth : '' }}" required>
+                                          <input type="date" id="dateOfBirthInput" class="form-control round" placeholder="Y-m-d" name="date_of_birth" value="{{ $isEdit ? $data->date_of_birth : '2000-02-01' }}" >
                                       </div>
                                     </div>
 
@@ -159,7 +159,7 @@
                                           <label for="maritalSelect">Marital Status</label>
                                           <select name="marital_status" id="maritalSelect" class="form-control round">
                                             <option value="KAWIN">Kawin</option>
-                                            <option value="BELUM_KAWIN">Belum Kawin</option>
+                                            <option value="BELUM_KAWIN" selected>Belum Kawin</option>
                                             <option value="CERAI_HIDUP">Cerai Hidup</option>
                                             <option value="CERAI_MATI">Cerai Mati</option>
                                           </select>
@@ -172,7 +172,7 @@
                                             <option value="A">A</option>
                                             <option value="B">B</option>
                                             <option value="AB">AB</option>
-                                            <option value="O">O</option>
+                                            <option value="O" selected>O</option>
                                           </select>
                                       </div>
                                     </div>
@@ -203,7 +203,7 @@
                                     <div class="col-md-12">
                                       <div class="form-group skin skin-flat">
                                           <label for="addressArea">Alamat Lengkap</label>
-                                          <textarea class="form-control round" name="address" id="addressArea" rows="7"></textarea>
+                                          <textarea class="form-control round" name="address" id="addressArea" rows="7">Jalan Jalan</textarea>
                                       </div>
                                     </div>
 

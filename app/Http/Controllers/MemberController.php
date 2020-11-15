@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class MemberController extends Controller
 {
@@ -43,7 +45,14 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $this->model::create($request->all());
+        $data = $request->all();
+        if($request->photo) {
+            $data['photo'] = $request->file('photo')->store('assets/photos', 'public');
+        }
+
+        $data['password'] = Hash::make($request->password);
+
+        $this->model::create($data);
 
         return redirect()->route($this->routeToIndex);
     }
@@ -84,8 +93,21 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $this->model::findOrFail($id)->update($request->all());
+        $user_data = User::findOrFail($id);
+        $data = $request->all();
+        if($request->photo) {
+            if($user_data->photo){
+                $imagePath = public_path('storage/'.$user_data->photo);
+                unlink($imagePath);
+            }
+            $data['photo'] = $request->file('photo')->store('assets/photos', 'public');
+        }
+        if($request->password) {
+            $data['password'] = Hash::make($request->password);
+        } else {
+            $data['password'] = $user_data->password;
+        }
+        $this->model::findOrFail($id)->update($data);
 
         return redirect()->route($this->routeToIndex);
     }
@@ -119,6 +141,9 @@ class MemberController extends Controller
 
     public function forceDelete($id)
     {
+        $user_data = User::withTrashed()->findOrFail($id);
+        $imagePath = public_path('storage/'.$user_data->photo);
+        unlink($imagePath);
         $this->model::onlyTrashed()->findOrFail($id)->forceDelete();
 
         return redirect()->back();

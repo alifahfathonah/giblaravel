@@ -61,8 +61,9 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">#</th>
                                         <th scope="col">Nama Lengkap</th>
-                                        <th scope="col">Nama Panggilan</th>
+                                        <th scope="col">Bulan Masuk</th>
                                         <th scope="col" class="text-right">Aksi</th>
                                     </tr>
                                 </thead>
@@ -71,8 +72,11 @@
                                     @foreach ($datas as $data)
                                         <tr>
                                             <th scope="row">{{ $data->id }}</th>
+                                            <th scope="row">
+                                                <div style="width: 100px;height: 100px;background-image: url({{ Storage::url($data->photo) }});background-position: center;background-size: cover;border-radius: 9999px;overflow: hidden;"></div>
+                                            </th>
                                             <td>{{ $data->name }}</td>
-                                            <td>{{ $data->nickname }}</td>
+                                            <td>{{ date_format($data->created_at, 'F Y') }}</td>
                                             <td class="text-right">
                                                 <a href="{{ route('members.show', $data->id) }}" class="btn btn-sm btn-info"><i class="ft-eye"></i> <span class="d-none d-xl-inline">Lihat</span></a>
                                                 <a href="{{ route('members.edit', $data->id) }}" class="btn btn-sm btn-warning"><i class="ft-edit"></i> <span class="d-none d-xl-inline">Edit</span></a>
