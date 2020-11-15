@@ -46,23 +46,33 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 
-                                <a href="{{ route('members.create') }}" class="btn btn-md btn-primary">
-                                    <i class="ft-plus" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Tambah Data</span>
-                                </a>
+                                <div>
+                                    <a href="{{ route('members.create') }}" class="btn btn-md btn-primary">
+                                        <i class="ft-plus" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Tambah Data</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-success">
+                                        <i class="ft-file-plus" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Import Data</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-success">
+                                        <i class="ft-external-link" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Export Data</span>
+                                    </a>
+                                </div>
                                 
-                                <a href="{{ route('members.view-trashed') }}" class="btn btn-md btn-info">
-                                    <i class="ft-trash-2" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Lihat Data Sampah</span>
-                                </a>
+                                <div>
+                                    <a href="{{ route('members.view-trashed') }}" class="btn btn-md btn-info">
+                                        <i class="ft-trash-2" style="font-size: 1.3em;"></i> <span class="d-none d-lg-inline">Lihat Data Sampah</span>
+                                    </a>
+                                </div>
 
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table table-striped table-hover">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nama Lengkap</th>
+                                        <th scope="col" style="width: 50px">#</th>
+                                        <th scope="col" style="width: 75px"></th>
+                                        <th scope="col">Nama</th>
                                         <th scope="col">Bulan Masuk</th>
                                         <th scope="col" class="text-right">Aksi</th>
                                     </tr>
@@ -73,9 +83,19 @@
                                         <tr>
                                             <th scope="row">{{ $data->id }}</th>
                                             <th scope="row">
-                                                <div style="width: 100px;height: 100px;background-image: url({{ Storage::url($data->photo) }});background-position: center;background-size: cover;border-radius: 9999px;overflow: hidden;"></div>
+                                                @if ($data->photo)
+                                                    <div class="custom-list-photo-member" style="background-image: url({{Storage::url($data->photo)}});"></div>                                                    
+                                                @else
+                                                    <span class="avatar" style="width: 45px;height:45px"><img src="{{ $data->getUrlfriendlyAvatar() }}" alt="{{ $data->fullname }}"></span>
+                                                @endif
                                             </th>
-                                            <td>{{ $data->name }}</td>
+                                            <td>
+                                                @if ($data->fullname)
+                                                    {{ $data->fullname }}
+                                                @else
+                                                    {{ $data->name }}
+                                                @endif
+                                            </td>
                                             <td>{{ date_format($data->created_at, 'F Y') }}</td>
                                             <td class="text-right">
                                                 <a href="{{ route('members.show', $data->id) }}" class="btn btn-sm btn-info"><i class="ft-eye"></i> <span class="d-none d-xl-inline">Lihat</span></a>

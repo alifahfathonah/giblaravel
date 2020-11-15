@@ -1,20 +1,6 @@
-@php
-    $isEdit = isset($data);
-    $method = $isEdit ? method_field('PUT') : ''; 
-    $route = $isEdit ? route('members.update', $data->id) : route('members.store');
-@endphp
-
 @extends('layouts.admin')
 
-@if ($isEdit)
-    
-  @section('title', 'Member ~Edit')    
-
-@else
-
-  @section('title', 'Member ~Tambah')    
-    
-@endif
+@section('title', 'Member ~Detail')    
 
 @section('data-color', 'bg-gradient-x-blue-cyan') 
 
@@ -34,7 +20,7 @@
                   </li>
                   <li class="breadcrumb-item"><a href="{{ route('members.index') }}">Member</a>
                   </li>
-                  <li class="breadcrumb-item active">{{ $isEdit ? 'Edit' : 'Tambah' }}
+                  <li class="breadcrumb-item active">Detail Profil
                   </li>
                 </ol>
               </div>
@@ -48,7 +34,7 @@
             <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4 class="card-title">{{ $isEdit ? 'Edit' : 'Tambah' }} Data</h4>
+                    <h4 class="card-title">Profile #{{ $data->id }}</h4>
                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                         <div class="heading-elements">
                             <ul class="list-inline mb-0">
@@ -58,27 +44,32 @@
                     </div>
                     <div class="card-content collapse show">
                         <div class="card-body">
-                            
-                            <form class="form" action="{{ $route }}" method="POST" enctype="multipart/form-data">
-                                @csrf {{ $method }}
-                                <div class="form-body">
+                            <div class="form-body">
 
-                                    <div class="form-group">
-                                        <label for="nameInput">Nama</label>
-                                        <input type="text" id="nameInput" class="form-control round" placeholder="nama member" name="name" value="{{ $isEdit ? $data->name : '' }}" required>
-                                    </div>
-
+                              @if ($data->fullname)
+                                <div class="form-group">
+                                    <label for="nameInput">Nama Panjang</label>
+                                    <h1>{{ $data->fullname }}</h1>
                                 </div>
+                              @endif
 
-                                <div class="form-actions">
-                                    <a href="{{ route('members.index') }}" class="btn btn-warning mr-1 text-white">
-                                        <i class="ft-arrow-left"></i> Kembali
-                                    </a>
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="la la-check-square-o"></i> {{ $isEdit ? 'Confirm' : 'Submit' }}
-                                    </button>
-                                </div>
-                            </form>
+                              <div class="form-group">
+                                  <label for="nameInput">Nama Panggilan</label>
+                                  <h1>{{ $data->name }}</h1>
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="nameInput">Email</label>
+                                  <h1>{{ $data->email }}</h1>
+                              </div>
+
+                            </div>
+
+                            <div class="form-actions">
+                                <a href="{{ route('members.index') }}" class="btn btn-warning mr-1 text-white">
+                                    <i class="ft-arrow-left"></i> Kembali
+                                </a>
+                            </div>
 
                         </div>
                     </div>

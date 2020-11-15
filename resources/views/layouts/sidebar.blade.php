@@ -1,7 +1,7 @@
-    <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="/chameleon/theme-assets/images/backgrounds/04.jpg">
+    <div class="main-menu menu-fixed menu-accordion menu-shadow menu-dark" data-scroll-to-active="true" data-img="/chameleon/theme-assets/images/backgrounds/04.jpg">
       <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">       
-          <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('dashboard') }}"><img class="brand-logo" alt="Chameleon admin logo" src="https://infaqberasjogja.com/wp-content/uploads/2020/05/4-o.png" style="filter: contrast(0);height: auto;width: 70px;"/>
+          <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('dashboard') }}"><img class="brand-logo custom-sidebar-logo" alt="Paskas logo" src="https://infaqberasjogja.com/wp-content/uploads/2020/05/4-o.png"/>
               <h3 class="brand-text">Chameleon</h3></a></li>
           <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
         </ul>

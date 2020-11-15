@@ -142,8 +142,10 @@ class MemberController extends Controller
     public function forceDelete($id)
     {
         $user_data = User::withTrashed()->findOrFail($id);
-        $imagePath = public_path('storage/'.$user_data->photo);
-        unlink($imagePath);
+        if($user_data->photo){
+            $imagePath = public_path('storage/'.$user_data->photo);
+            unlink($imagePath);
+        }
         $this->model::onlyTrashed()->findOrFail($id)->forceDelete();
 
         return redirect()->back();
