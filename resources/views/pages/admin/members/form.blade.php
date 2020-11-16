@@ -179,7 +179,7 @@
 
                                     <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="province_id">Provinsi</label>
+                                          <label for="province_id">Provinsi <span class="text-danger" style="font-size: 12px">*tempat menetap sekarang</span></label>
                                           <select name="province_id" id="province_id" class="form-control round" v-if="provinces" v-model="provinces_id">
                                             <option v-for="province in provinces" :value="province.id">@{{ province.name }}</option>                                                
                                           </select>
@@ -190,7 +190,7 @@
                                     </div>
                                     <div class="col-md-6">
                                       <div class="form-group skin skin-flat">
-                                          <label for="regency_id">Kabupaten</label>
+                                          <label for="regency_id">Kabupaten <span class="text-danger" style="font-size: 12px">*tempat menetap sekarang</span></label>
                                           <select name="regency_id" id="regency_id" class="form-control round" v-if="cities" v-model="cities_id">
                                             <option v-for="city in cities" :value="city.id">@{{ city.name }}</option>                                                
                                           </select>
