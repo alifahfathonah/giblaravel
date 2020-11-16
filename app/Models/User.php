@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Master\Division;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -85,5 +86,10 @@ class User extends Authenticatable
 
     public function getAvatar( $size = 64 ) {
         return $this->getGravatar( $this->email, $size );
+    }
+    
+    public function division()
+    {
+        return $this->belongsTo(Division::class);
     }
 }

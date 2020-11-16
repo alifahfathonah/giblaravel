@@ -31,59 +31,38 @@
 
         <!-- Table head options start -->
         <div class="row">
-            <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4 class="card-title">Profile #{{ $data->id }}</h4>
-                        <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                        <div class="heading-elements">
-                            <ul class="list-inline mb-0">
-                                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-content collapse show">
-                        <div class="card-body">
-                            <div class="form-body">
 
-                              @if ($data->fullname)
-                                <div class="form-group">
-                                    <label for="nameInput">Nama Panjang</label>
-                                    <h1>{{ $data->fullname }}</h1>
-                                </div>
-                              @endif
-
-                              <div class="form-group">
-                                  <label for="nameInput">Nama Panggilan</label>
-                                  <h1>{{ $data->name }}</h1>
-                              </div>
-
-                              <div class="form-group">
-                                  <label for="nameInput">Email</label>
-                                  <h1>{{ $data->email }}</h1>
-                              </div>
-
-                            </div>
-
-                            <div class="form-actions">
-                                <a href="{{ route('members.index') }}" class="btn btn-warning mr-1 text-white">
-                                    <i class="ft-arrow-left"></i> Kembali
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-3">
+            <div class="col-xl-4 mb-3">
               <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Member #{{ $data->id }}</h4>
+                  <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                  <div class="heading-elements">
+                      <ul class="list-inline mb-0">
+                          {{-- <li><a data-action="expand"><i class="ft-maximize"></i></a></li> --}}
+                          <li><a href="{{ route('members.edit', $data->id) }}"><i class="ft-edit"></i></a></li>
+                      </ul>
+                  </div>
+                </div>
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    @if ($data->photo)
+                      <div class="rounded-circle overflow-hidden custom-list-photo-member image-profile-in-detail-page" style="width: 300px;height: 300px;background-image: url({{ Storage::url($data->photo) }});">
+                        <div class="h-100 w-100 photo-detail-tag-box">
+                          <div class="button-detail-profile">
+                            <a href="#" class="btn btn-warning"><i class="ft-edit"></i></a>
+                            <a href="#" class="btn btn-danger"><i class="ft-x "></i></a>
+                            <a href="#" class="btn btn-info"><i class="ft-download "></i></a>
+                          </div>
+                          <div class="h-100 w-100 bg-black photo-detail-tag-bg"></div>
+                        </div>
+                      </div>
+                    @else
+                      <img src="{{ $data->getUrlfriendlyAvatar() }}" alt="{{ $data->name }}" class="rounded-circle" width="150">
+                    @endif
                     <div class="mt-3">
-                      <h4>John Doe</h4>
-                      <p class="text-secondary mb-1">Full Stack Developer</p>
+                      <h4>{{ $data->fullname ? $data->fullname : $data->name }}</h4>
+                      <p class="text-secondary mb-1">{{ $data->division_id ? $data->division->name : 'Belum Masuk Divisi' }}</p>
                       <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                       <button class="btn btn-primary">Follow</button>
                       <button class="btn btn-outline-primary">Message</button>
@@ -116,7 +95,7 @@
                 </ul>
               </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-xl-8">
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="row">

@@ -71,5 +71,40 @@
     border-radius: 9999px;
     overflow: hidden;
 }
+.image-profile-in-detail-page {
+    transition: all 0.3s ease-in-out;
+}
 
+.image-profile-in-detail-page:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 0px 7px gainsboro;
+}
+
+.photo-detail-tag-box {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-detail-tag-bg {
+    position: absolute;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.button-detail-profile {
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.image-profile-in-detail-page:hover .photo-detail-tag-bg {
+    opacity: 0.3;
+}
+
+.image-profile-in-detail-page:hover .button-detail-profile {
+    opacity: 1;
+}
 /* endContent */

@@ -2,6 +2,7 @@
 
 namespace App\Models\Master;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,4 +16,9 @@ class Division extends Model
     ];
 
     protected $hidden=[];
+
+    public function users()
+    {
+        $this->hasMany(User::class);
+    }
 }

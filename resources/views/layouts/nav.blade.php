@@ -19,6 +19,7 @@
                 <div class="dropdown-menu dropdown-menu-right">
                   <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="{{ Auth::user()->getUrlfriendlyAvatar() }}" alt="avatar"><span class="user-name text-bold-700 ml-1">{{ Str::title(Auth::user()->name) }}</span></span></a>
                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ route('members.show', Auth::user()->id) }}"><i class="ft-eye"></i> Detail Profile</a>
                     <a class="dropdown-item" href="{{ route('members.edit', Auth::user()->id) }}"><i class="ft-user"></i> Edit Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="" href="#">
