@@ -271,23 +271,64 @@
                                           </select>
                                       </div>
                                     </div>
-                                    <div></div>
-                                    <div class=" col-md-6">
-                                      <div class="form-group">
-                                          <label for="photoInput">Upload Foto Profil</label>
-                                          <div class="fileinput fileinput-new form-control custom-upload-photo-box" data-provides="fileinput">
-                                            <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
-                                            <div>
-                                              <span class="btn btn-outline-secondary btn-file">
-                                                <span class="fileinput-new">Select image</span>
-                                                <span class="fileinput-exists">Change</span>
-                                                <input type="file" name="photo">
-                                              </span>
-                                              <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                            </div>
-                                          </div>
-                                      </div>
-                                    </div>
+																		
+																		@if ($isEdit)
+																			@if ($data->photo)
+																				<div class=" col-md-6">
+																					<div class="form-group">
+																						<label for="photoInput">Upload Foto Profil</label> 
+																						<div data-provides="fileinput" class="fileinput form-control custom-upload-photo-box fileinput-exists">
+																							<div data-trigger="fileinput" class="fileinput-preview img-thumbnail" style="width: 200px; height: 150px; line-height: 150px;">
+																								<img src="{{ Storage::url($data->photo) }}">
+																							</div> 
+																							<div>
+																								<span class="btn btn-outline-secondary btn-file">
+																									<span class="fileinput-new">Select image</span> 
+																									<span class="fileinput-exists">Change</span> 
+																									<input type="hidden" value="" name="">
+																									<input type="file" name="photo">
+																								</span> 
+																								<a href="#" data-dismiss="fileinput" class="btn btn-outline-secondary fileinput-exists">Remove</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>		
+																			@else
+																				<div class=" col-md-6">
+																					<div class="form-group">
+																							<label for="photoInput">Upload Foto Profil</label>
+																							<div class="fileinput fileinput-new form-control custom-upload-photo-box" data-provides="fileinput">
+																								<div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+																								<div>
+																									<span class="btn btn-outline-secondary btn-file">
+																										<span class="fileinput-new">Select image</span>
+																										<span class="fileinput-exists">Change</span>
+																										<input type="file" name="photo">
+																									</span>
+																									<a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+																								</div>
+																							</div>
+																					</div>
+																				</div>		
+																			@endif
+																		@else
+																			<div class=" col-md-6">
+																				<div class="form-group">
+																						<label for="photoInput">Upload Foto Profil</label>
+																						<div class="fileinput fileinput-new form-control custom-upload-photo-box" data-provides="fileinput">
+																							<div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+																							<div>
+																								<span class="btn btn-outline-secondary btn-file">
+																									<span class="fileinput-new">Select image</span>
+																									<span class="fileinput-exists">Change</span>
+																									<input type="file" name="photo">
+																								</span>
+																								<a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+																							</div>
+																						</div>
+																				</div>
+																			</div>
+																		@endif
 
                                   </div>
 
@@ -324,6 +365,7 @@
     el: "#locations",
     mounted() {
       this.getProvincesData();
+      this.getCitiesData();
     },
     data: {
       provinces: null,

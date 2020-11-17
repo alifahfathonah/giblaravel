@@ -107,4 +107,43 @@
 .image-profile-in-detail-page:hover .button-detail-profile {
     opacity: 1;
 }
+
+.new-member-hover {
+    background-color: white;
+    border-radius: 100px 0px 0px 100px;
+    transition: all 0.2s ease-out;
+}
+
+.new-member-hover .new-member-heading {
+    font-size: 17px;
+    color: black;
+    display: block;
+    transition: all 0.4s ease-out;
+}
+
+.new-member-hover .new-member-secondary {
+    font-style: italic;
+    font-size: 0.9em;
+    color: gray;
+    transition: all 0.4s ease-out;
+}
+
+.new-member-hover:hover {
+    /* background-color: rgba(38, 45, 71, 1); */
+    background-color: rgb(244, 245, 250);
+}
+
+.new-member-hover:hover .new-member-heading,
+.new-member-hover:hover .new-member-secondary {
+    color: rgba(38, 45, 71, 1);
+}
+
+.new-member-hover:hover .new-member-secondary {
+    opacity: 0.7;
+}
+
+.new-member-hover:hover .image-profile-in-detail-page {
+    transform: scale(1.2);
+    box-shadow: 0px 0px 7px gainsboro;
+}
 /* endContent */

@@ -48,22 +48,6 @@
 
             </ul>
           </li>
-          
-          <li class=" nav-item"><a href="https://themeselection.com/demo/chameleon-admin-template/documentation"><i class="ft-book"></i><span class="menu-title" data-i18n="">Documentation</span></a>
-          </li>
-
-          <li class="has-sub nav-item"><a href="#"><i class="ft-server"></i><span class="menu-title" data-i18n="">Menu levels</span></a>
-            <ul class="menu-content">
-              <li><a class="menu-item" href="#">Second level</a>
-              </li>
-              <li class="has-sub"><a class="menu-item" href="#">Second level child</a>
-                <ul class="menu-content">
-                  <li><a class="menu-item" href="#">Third level</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
 
         </ul>
       </div>

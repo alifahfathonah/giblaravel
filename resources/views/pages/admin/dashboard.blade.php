@@ -115,31 +115,24 @@
                       <div class="card-content">
                           <div id="recent-buyers" class="media-list">
                               @foreach ($new_users as $data)
-                                  <a href="{{ route('members.show', $data->id) }}" class="media border-0">
-                                    <div class="media-left pr-1">
-                                        <span class="avatar avatar-md">
-                                            @if ($data->photo)
-                                                <div class="rounded-circle overflow-hidden custom-list-photo-member image-profile-in-detail-page" style="width: 45px;height: 45px;background-image: url({{ Storage::url($data->photo) }});"></div>
-                                            @else
-                                                <img src="{{ $data->getUrlfriendlyAvatar() }}" alt="{{ $data->name }}" class="media-object rounded-circle" width="45">
-                                            @endif
-                                            <i></i>
-                                        </span>
-                                    </div>
-                                    <div class="media-body w-100">
-                                        <span class="list-group-item-heading">{{ $data->name }}
-
-                                        </span>
-                                        <ul class="list-unstyled users-list m-0 float-right">
-                                            <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Product 1" class="avatar avatar-sm pull-up">
-                                                <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="/chameleon/theme-assets/images/portfolio/portfolio-1.jpg"
-                                                    alt="Avatar">
-                                            </li>
-                                        </ul>
-                                        <p class="list-group-item-text mb-0">
-                                            <span class="blue-grey lighten-2 font-small-3"> {{ $data->fullname }} {{ $data->gender ? $data->gender == 'L' ? '| Laki - Laki' : '| Perempuan' : '' }} </span>
-                                        </p>
-                                    </div>
+                                  <a href="{{ route('members.show', $data->id) }}" class="media border-0 new-member-hover">
+                                    <table>
+                                        <tr style="height: 60%">
+                                            <td rowspan="2" style="padding-right: 17px">
+                                                @if ($data->photo)
+                                                    <div class="rounded-circle overflow-hidden custom-list-photo-member image-profile-in-detail-page" style="width: 45px;height: 45px;background-image: url({{ Storage::url($data->photo) }});"></div>
+                                                @else
+                                                    <img src="{{ $data->getUrlfriendlyAvatar() }}" alt="{{ $data->name }}" class="media-object rounded-circle image-profile-in-detail-page" width="45">
+                                                @endif
+                                            </td>
+                                            <td style="width: 400px"><span class="new-member-heading">{{ $data->fullname }}</span></td>
+                                            <td><span class="new-member-heading">{!! $data->gender ? $data->gender == 'L' ? 'Laki - Laki' : 'Perempuan' : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>' !!}</span></td>
+                                        </tr>
+                                        <tr style="height: 40%">
+                                            <td><span class="new-member-secondary">Nama</span></td>
+                                            <td><span class="new-member-secondary">Gender</span></td>
+                                        </tr>
+                                    </table>
                                 </a>
                               @endforeach
                           </div>
