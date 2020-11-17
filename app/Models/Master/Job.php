@@ -15,4 +15,9 @@ class Job extends Model
     ];
 
     protected $hidden=[];
+
+    public function users()
+    {
+        $this->hasMany(User::class);
+    }
 }

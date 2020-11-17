@@ -25,9 +25,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');    
 
     Route::resource('/members', MemberController::class);
-    Route::get('/members/show/trashed', [MemberController::class, 'viewTrashed'])->name('members.view-trashed');
-    Route::get('/members/{id}/restore', [MemberController::class, 'restore'])->name('members.restore');
-    Route::delete('/members/{id}/force-delete', [MemberController::class, 'forceDelete'])->name('members.force-delete');
+    Route::prefix('members')->name('members.')->group(function () {
+        Route::get('/show/trashed', [MemberController::class, 'viewTrashed'])->name('view-trashed');
+        Route::get('/{id}/restore', [MemberController::class, 'restore'])->name('restore');
+        Route::delete('/{id}/force-delete', [MemberController::class, 'forceDelete'])->name('force-delete');
+
+        Route::get('/profile/photo/{id}/download', [MemberController::class, 'profilePhotoDownload'])->name('profile-photo-download');
+    });
     
     Route::prefix('masters')->name('masters.')->group(function () {
         Route::resource('/specializations', SpecializationController::class);

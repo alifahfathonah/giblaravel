@@ -16,4 +16,9 @@ class Graduate extends Model
 
     protected $hidden=[];
 
+    public function users()
+    {
+        $this->hasMany(User::class);
+    }
+
 }

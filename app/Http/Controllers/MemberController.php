@@ -120,9 +120,10 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
+        // dd($this->model::findOrFail($id));
         $this->model::findOrFail($id)->delete();
 
-        return redirect()->back();
+        return redirect()->route($this->routeToIndex);
     }
 
     public function viewTrashed()
@@ -149,5 +150,13 @@ class MemberController extends Controller
         $this->model::onlyTrashed()->findOrFail($id)->forceDelete();
 
         return redirect()->back();
+    }
+
+    public function profilePhotoDownload($id)
+    {
+        $user_data = User::withTrashed()->findOrFail($id);
+        $photoPath = public_path('storage/'.$user_data->photo);
+
+        return Storage::download($photoPath);
     }
 }

@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Models\Master\Division;
+use App\Models\Master\Graduate;
+use App\Models\Master\Major;
+use App\Models\Master\Specialization;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -91,5 +94,20 @@ class User extends Authenticatable
     public function division()
     {
         return $this->belongsTo(Division::class);
+    }
+    
+    public function graduate()
+    {
+        return $this->belongsTo(Graduate::class);
+    }
+    
+    public function major()
+    {
+        return $this->belongsTo(Major::class);
+    }
+    
+    public function specialization()
+    {
+        return $this->belongsTo(Specialization::class);
     }
 }
