@@ -124,9 +124,9 @@
                                     <div class="col-md-3">
                                       <div class="form-group skin skin-flat">
                                           <label for="roleInput">Role</label>
-                                          <select name="" id="" class="form-control round">
-                                            <option value="MEMBER" selected>Member</option>
-                                            <option value="ADMIN">Admin</option>
+                                          <select name="role" id="roleInput" class="form-control round">
+                                            <option value="MEMBER" {{ $isEdit ? $data->role == 'MEMBER' ? 'selected' : null : null }}>Member</option>
+                                            <option value="ADMIN" {{ $isEdit ? $data->role == 'ADMIN' ? 'selected' : null : null }}>Admin</option>
                                           </select>
                                       </div>
                                     </div>
@@ -134,8 +134,9 @@
                                       <div class="form-group skin skin-flat">
                                           <label for="genderSelect">Jenis Kelamin</label>
                                           <select name="gender" id="genderSelect" class="form-control round">
-                                            <option value="L" selected>Laki - Laki</option>
-                                            <option value="P">Perempuan</option>
+                                            <option><i>~ pilih jenis kelamin ~</i></option>
+                                            <option value="L" {{ $isEdit ? $data->gender == 'L' ? 'selected' : null : null }}>Laki - Laki</option>
+                                            <option value="P" {{ $isEdit ? $data->gender == 'P' ? 'selected' : null : null }}>Perempuan</option>
                                           </select>
                                       </div>
                                     </div>
@@ -156,12 +157,13 @@
 
                                     <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="maritalSelect">Marital Status</label>
+                                          <label for="maritalSelect">Status Perkawinan</label>
                                           <select name="marital_status" id="maritalSelect" class="form-control round">
-                                            <option value="KAWIN">Kawin</option>
-                                            <option value="BELUM_KAWIN" selected>Belum Kawin</option>
-                                            <option value="CERAI_HIDUP">Cerai Hidup</option>
-                                            <option value="CERAI_MATI">Cerai Mati</option>
+                                            <option><i>~ pilih status perkawinan ~</i></option>
+                                            <option value="KAWIN" {{ $isEdit ? $data->marital_status == 'KAWIN' ? 'selected' : null : null }}>Kawin</option>
+                                            <option value="BELUM_KAWIN" {{ $isEdit ? $data->marital_status == 'BELUM_KAWIN' ? 'selected' : null : null }}>Belum Kawin</option>
+                                            <option value="CERAI_HIDUP" {{ $isEdit ? $data->marital_status == 'CERAI_HIDUP' ? 'selected' : null : null }}>Cerai Hidup</option>
+                                            <option value="CERAI_MATI" {{ $isEdit ? $data->marital_status == 'CERAI_MATI' ? 'selected' : null : null }}>Cerai Mati</option>
                                           </select>
                                       </div>
                                     </div>
@@ -169,10 +171,11 @@
                                       <div class="form-group skin skin-flat">
                                           <label for="bloodSelect">Golongan Darah</label>
                                           <select name="blood_type" id="bloodSelect" class="form-control round">
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="AB">AB</option>
-                                            <option value="O" selected>O</option>
+                                            <option><i>~ pilih golongan darah ~</i></option>
+                                            <option value="A" {{ $isEdit ? $data->blood_type == 'A' ? 'selected' : null : null }}>A</option>
+                                            <option value="B" {{ $isEdit ? $data->blood_type == 'B' ? 'selected' : null : null }}>B</option>
+                                            <option value="AB" {{ $isEdit ? $data->blood_type == 'AB' ? 'selected' : null : null }}>AB</option>
+                                            <option value="O" {{ $isEdit ? $data->blood_type == 'O' ? 'selected' : null : null }}>O</option>
                                           </select>
                                       </div>
                                     </div>
@@ -211,6 +214,7 @@
                                       <div class="form-group skin skin-flat">
                                           <label for="graduateSelect">Pendidikan</label>
                                           <select name="graduate_id" id="graduateSelect" class="form-control round">
+                                            <option><i>~ pilih pendidikan terakhir ~</i></option>
                                             @foreach ($graduates as $graduate)
                                               <option value="{{ $graduate->id }}">{{ $graduate->name }}</option>                                                
                                             @endforeach
@@ -221,6 +225,7 @@
                                       <div class="form-group skin skin-flat">
                                           <label for="majorSelect">Jurusan Pendidikan</label>
                                           <select name="major_id" id="majorSelect" class="form-control round">
+                                            <option><i>~ pilih jurusan pendidikan terakhir ~</i></option>
                                             @foreach ($majors as $major)
                                               <option value="{{ $major->id }}">{{ $major->name }}</option>                                                
                                             @endforeach
@@ -232,6 +237,7 @@
                                       <div class="form-group skin skin-flat">
                                           <label for="jobSelect">Pekerjaan Sekarang</label>
                                           <select name="job_id" id="jobSelect" class="form-control round">
+                                            <option><i>~ pilih pekerjaan sekarang ~</i></option>
                                             @foreach ($jobs as $job)
                                               <option value="{{ $job->id }}">{{ $job->name }}</option>                                                
                                             @endforeach
@@ -243,6 +249,7 @@
                                       <div class="form-group skin skin-flat">
                                           <label for="specializationSelect">Peminatan</label>
                                           <select name="specialization_id" id="specializationSelect" class="form-control round">
+                                            <option><i>~ pilih minat dalam bidang apa ~</i></option>
                                             @foreach ($specializations as $specialization)
                                               <option value="{{ $specialization->id }}">{{ $specialization->name }}</option>                                                
                                             @endforeach
@@ -254,6 +261,7 @@
                                       <div class="form-group skin skin-flat">
                                           <label for="divisionSelect">Divisi</label>
                                           <select name="division_id" id="divisionSelect" class="form-control round">
+                                            <option><i>~ pilih divisi ~</i></option>
                                             @foreach ($divisions as $divisi)
                                               <option value="{{ $divisi->id }}">{{ $divisi->name }}</option>                                                
                                             @endforeach
