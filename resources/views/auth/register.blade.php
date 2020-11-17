@@ -44,7 +44,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login | GIB Database Kader</title>
+	<title>Daftar | GIB Database Kader</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -83,7 +83,7 @@
                         Isi form singkat dibawah untuk menjadi calon member!
                     </span>
 
-					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
+					<div class="wrap-input100 m-b-10">
 						<input class="input100" type="text" name="fullname" placeholder="Nama Lengkap" required value="{{ old('fullname') }}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -91,7 +91,7 @@
 						</span>
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
+					<div class="wrap-input100 m-b-10">
 						<input class="input100" type="text" name="name" placeholder="Nama Panggilan" required value="{{ old('name') }}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -99,7 +99,7 @@
 						</span>
                     </div>
                     
-                    <div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
+                    <div class="wrap-input100 m-b-10">
 						<input class="input100" type="email" name="email" placeholder="Email" required value="{{ old('email') }}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">

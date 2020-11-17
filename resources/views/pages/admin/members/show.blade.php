@@ -65,8 +65,9 @@
                       </div>
                     @else
                       <img src="{{ $data->getUrlfriendlyAvatar() }}" alt="{{ $data->name }}" class="rounded-circle" width="150">
+                      <a href="#" class="btn btn-sm btn-info" style="position: absolute;transform: translateY(155px)"><i class="ft-edit"></i> Add Photo Profile</a>
                     @endif
-                    <div class="mt-3">
+                    <div class="@if ($data->photo) mt-3 @else mt-5 @endif">
                       <h4>{{ $data->fullname ? $data->fullname : $data->name }}</h4>
                       <p class="text-secondary mb-1">{{ $data->division_id ? $data->division->name : 'Belum Masuk Divisi' }}</p>
                       <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
@@ -185,6 +186,16 @@
 
                       <div class="row">
                         <div class="col-sm-4">
+                          <h6 class="mb-0">Gender</h6>
+                        </div>
+                        <div class="col-sm-8 text-secondary">
+                          {!! $data->gender ? $data->gender == 'L' ? 'Laki - Laki' : 'Perempuan' : '<span class="text-warning">belum isi data</span>' !!}
+                        </div>
+                      </div>
+                      <hr>
+
+                      <div class="row">
+                        <div class="col-sm-4">
                           <h6 class="mb-0">Status Perkawinan</h6>
                         </div>
                         <div class="col-sm-8 text-secondary">
@@ -196,16 +207,6 @@
                           @else
                             <span class="text-warning">belum isi data</span>
                           @endif
-                        </div>
-                      </div>
-                      <hr>
-
-                      <div class="row">
-                        <div class="col-sm-4">
-                          <h6 class="mb-0">Gender</h6>
-                        </div>
-                        <div class="col-sm-8 text-secondary">
-                          {{ $data->gender == 'L' ? 'Laki - Laki' : 'Perempuan' }}
                         </div>
                       </div>
                       <hr>
@@ -287,6 +288,20 @@
               </div>
               <div class="card">
                 <div class="card-body">
+
+                   <div class="row">
+                    <div class="col-sm-6">
+                      <h6 class="mb-0">Tanggal Bergabung</h6>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                      @if ($data->created_at)
+                        {{ date('dS F Y', strtotime($data->created_at)) }}
+                      @else
+                        <span class="text-warning">belum isi data</span>
+                      @endif
+                    </div>
+                  </div>
+                  <hr>
 
                    <div class="row">
                     <div class="col-sm-6">

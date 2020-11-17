@@ -114,17 +114,20 @@
                       </div>
                       <div class="card-content">
                           <div id="recent-buyers" class="media-list">
-                              @foreach ($new_users as $user)
-                                  <a href="{{ route('members.show', $user->id) }}" class="media border-0">
+                              @foreach ($new_users as $data)
+                                  <a href="{{ route('members.show', $data->id) }}" class="media border-0">
                                     <div class="media-left pr-1">
                                         <span class="avatar avatar-md">
-                                            <img class="media-object rounded-circle" src="{{ $user->getUrlfriendlyAvatar() }}" alt="avatar">
-                                            {{-- <img class="media-object rounded-circle" src="/chameleon/theme-assets/images/portrait/small/avatar-s-7.png" alt="Generic placeholder image"> --}}
+                                            @if ($data->photo)
+                                                <div class="rounded-circle overflow-hidden custom-list-photo-member image-profile-in-detail-page" style="width: 45px;height: 45px;background-image: url({{ Storage::url($data->photo) }});"></div>
+                                            @else
+                                                <img src="{{ $data->getUrlfriendlyAvatar() }}" alt="{{ $data->name }}" class="media-object rounded-circle" width="45">
+                                            @endif
                                             <i></i>
                                         </span>
                                     </div>
                                     <div class="media-body w-100">
-                                        <span class="list-group-item-heading">{{ $user->name }}
+                                        <span class="list-group-item-heading">{{ $data->name }}
 
                                         </span>
                                         <ul class="list-unstyled users-list m-0 float-right">
@@ -132,17 +135,9 @@
                                                 <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="/chameleon/theme-assets/images/portfolio/portfolio-1.jpg"
                                                     alt="Avatar">
                                             </li>
-                                            <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Product 2" class="avatar avatar-sm pull-up">
-                                                <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="/chameleon/theme-assets/images/portfolio/portfolio-2.jpg"
-                                                    alt="Avatar">
-                                            </li>
-                                            <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Product 3" class="avatar avatar-sm pull-up">
-                                                <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="/chameleon/theme-assets/images/portfolio/portfolio-4.jpg"
-                                                    alt="Avatar">
-                                            </li>
                                         </ul>
                                         <p class="list-group-item-text mb-0">
-                                            <span class="blue-grey lighten-2 font-small-3"> {{ $user->fullname }} </span>
+                                            <span class="blue-grey lighten-2 font-small-3"> {{ $data->fullname }} {{ $data->gender ? $data->gender == 'L' ? '| Laki - Laki' : '| Perempuan' : '' }} </span>
                                         </p>
                                     </div>
                                 </a>
