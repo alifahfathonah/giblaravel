@@ -69,7 +69,7 @@
       </div>
       <form method="POST" action="{{ route('logout') }}">
         @csrf
-        <button type="submit" class="btn btn-danger btn-block btn-glow btn-upgrade-pro mx-1"><i class="ft-power"></i> Logout</button>
+        <button type="submit" class="btn @if(request()->routeIs('masters*'))btn-danger @else btn-primary @endif btn-block btn-glow btn-upgrade-pro mx-1"><i class="ft-power"></i> Logout</button>
       </form>
       <div class="navigation-background"></div>
     </div>
