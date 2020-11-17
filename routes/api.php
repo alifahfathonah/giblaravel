@@ -20,4 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('provinces', [LocationController::class, 'provinces'])->name('api-provinces');
+Route::get('province/{id}', [LocationController::class, 'provincesData'])->name('api-provinces-data');
 Route::get('cities/{provinces_id}', [LocationController::class, 'cities'])->name('api-cities');
+Route::get('city/{id}', [LocationController::class, 'cityData'])->name('api-city-data');

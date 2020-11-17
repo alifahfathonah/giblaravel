@@ -88,7 +88,7 @@
             </div>
             <div class="col-xl-8">
               <div class="card">
-                <div class="card-body">
+                <div class="card-body" id="locations">
                   
                   <div class="row">
                     <div class="col-sm-3">
@@ -130,29 +130,33 @@
                   </div>
                   <hr>
                   
-                  @if ($data->province_id)
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Provinsi</h6>
-                      </div>
-                      <div class="col-sm-3 text-secondary">
-                        {{ $data->province_id }}
-                      </div>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Provinsi</h6>
                     </div>
-                    <hr>
-                  @endif
+                    <div class="col-sm-3 text-secondary">
+                      @if ($data->province_id)
+                        @{{ provinces[0].name }}
+                      @else
+                        <span class="text-warning">belum isi data</span>
+                      @endif
+                    </div>
+                  </div>
+                  <hr>
                   
-                  @if ($data->regency_id)
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Kabupaten / Kota</h6>
-                      </div>
-                      <div class="col-sm-3 text-secondary">
-                        {{ $data->regency_id }}
-                      </div>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Kabupaten / Kota</h6>
                     </div>
-                    <hr>
-                  @endif
+                    <div class="col-sm-3 text-secondary">
+                    @if ($data->regency_id)
+                      @{{ cities[0].name }}
+                    @else
+                      <span class="text-warning">belum isi data</span>
+                    @endif
+                    </div>
+                  </div>
+                  <hr>
 
                   <div class="row">
                     <div class="col-sm-3">
@@ -340,3 +344,40 @@
       </div>
     </div>
 @endsection
+
+@push('after-script')
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script src="https://unpkg.com/vue-toasted"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  var locations = new Vue({
+    el: "#locations",
+    mounted() {
+      this.getProvincesData();
+      this.getCitiesData();
+    },
+    data: {
+      provinces: null,
+      cities: null,
+      provinces_id: '{{ $data->province_id }}',
+      cities_id: '{{ $data->regency_id }}',
+    },
+    methods: {
+      getProvincesData() {
+        var self = this;
+        axios.get('{{ url("api/province") }}/'+ self.provinces_id)
+          .then(function(response){
+            self.provinces = response.data;
+          });
+      },
+      getCitiesData() {
+        var self = this;
+        axios.get('{{ url("api/city") }}/' + self.cities_id)
+          .then(function(response){
+            self.cities = response.data;
+          });
+      },
+    },
+  });
+</script>
+@endpush

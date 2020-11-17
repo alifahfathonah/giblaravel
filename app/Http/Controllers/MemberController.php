@@ -100,7 +100,7 @@ class MemberController extends Controller
                 $imagePath = public_path('storage/'.$user_data->photo);
                 unlink($imagePath);
             }
-            $data['photo'] = $request->file('photo')->store('assets/photos', 'public');
+            $data['photo'] = $request->file('photo')->store('assets/photos');
         }
         if($request->password) {
             $data['password'] = Hash::make($request->password);
@@ -155,8 +155,8 @@ class MemberController extends Controller
     public function profilePhotoDownload($id)
     {
         $user_data = User::withTrashed()->findOrFail($id);
-        $photoPath = public_path('storage/'.$user_data->photo);
+        $photoPath = $user_data->photo;
 
-        return Storage::download($photoPath);
+        return Storage::disk('public')->download($photoPath);
     }
 }

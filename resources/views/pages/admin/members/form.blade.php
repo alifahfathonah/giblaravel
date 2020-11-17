@@ -328,8 +328,8 @@
     data: {
       provinces: null,
       cities: null,
-      provinces_id: null,
-      cities_id: null,
+      provinces_id: '{{ $isEdit ? $data->province_id : null }}',
+      cities_id: '{{ $isEdit ? $data->regency_id : null }}',
     },
     methods: {
       getProvincesData() {
@@ -341,7 +341,7 @@
       },
       getCitiesData() {
         var self = this;
-        axios.get('{{ url('api/cities') }}/' + self.provinces_id)
+        axios.get('{{ url("api/cities") }}/' + self.provinces_id)
           .then(function(response){
             self.cities = response.data;
           });

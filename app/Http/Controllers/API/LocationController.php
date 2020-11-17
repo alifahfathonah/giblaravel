@@ -13,8 +13,18 @@ class LocationController extends Controller
     {
         return Province::all();
     }
-    public function cities(Request $request, $provinces_id)
+    public function provincesData($id)
+    {
+        // dd(Province::where('id', $id)->get());
+        return Province::where('id', $id)->get();
+    }
+    public function cities($provinces_id)
     {
         return City::where('province_id', $provinces_id)->get();
+    }
+    public function cityData($id)
+    {
+        // dd(Province::where('id', $id)->get());
+        return City::where('id', $id)->get();
     }
 }
