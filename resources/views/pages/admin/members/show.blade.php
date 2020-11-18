@@ -294,10 +294,10 @@
                 <div class="card-body">
 
                    <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                       <h6 class="mb-0">Tanggal Bergabung</h6>
                     </div>
-                    <div class="col-sm-6 text-secondary">
+                    <div class="col-sm-9 text-secondary">
                       @if ($data->created_at)
                         {{ date('dS F Y', strtotime($data->created_at)) }}
                       @else
@@ -308,10 +308,10 @@
                   <hr>
 
                    <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                       <h6 class="mb-0">Divisi</h6>
                     </div>
-                    <div class="col-sm-6 text-secondary">
+                    <div class="col-sm-9 text-secondary">
                       @if ($data->division_id)
                         {{ $data->division->name }}
                       @else
@@ -322,16 +322,16 @@
                   <hr>
 
                    <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                       <h6 class="mb-0">Amanah</h6>
                     </div>
-                    <div class="col-sm-6 text-secondary">
+                    <div class="col-sm-9 text-secondary">
                       @if ($data->amanahs)
                         @php $no=1 @endphp
                         @foreach ($data->amanahs as $data)
                           <span class="badge badge-info py-1 px-2 mb-1 mr-1">{{ $no++ . '. ' . $data->name }}</span>                            
                         @endforeach
-                      @else
+                        @else
                         <span class="text-warning">belum ada amanah</span>
                       @endif
                     </div>

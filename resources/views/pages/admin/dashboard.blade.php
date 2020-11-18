@@ -2,6 +2,10 @@
 
 @section('title', 'Dashboard')    
 
+@push('after-link')
+	
+@endpush
+
 @section('data-color', 'bg-chartbg')    
 
 @section('content')

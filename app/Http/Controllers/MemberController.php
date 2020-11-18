@@ -104,7 +104,7 @@ class MemberController extends Controller
                 $imagePath = public_path('storage/'.$user_data->photo);
                 unlink($imagePath);
             }
-            $data['photo'] = $request->file('photo')->store('assets/photos');
+            $data['photo'] = $request->file('photo')->store('assets/photos', 'public');
         }
         if($request->password) {
             $data['password'] = Hash::make($request->password);
