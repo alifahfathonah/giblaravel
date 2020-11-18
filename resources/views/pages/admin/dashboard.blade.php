@@ -77,7 +77,7 @@
 													<div id="recent-buyers" class="media-list">
 															@foreach ($new_users as $data)
 																	<a href="{{ route('members.show', $data->id) }}" class="media border-0 new-member-hover">
-																		<table>
+																		{{-- <table>
 																				<tr style="height: 60%">
 																						<td rowspan="2" style="padding-right: 17px">
 																								@if ($data->photo)
@@ -93,7 +93,37 @@
 																						<td><span class="new-member-secondary">Nama</span></td>
 																						<td><span class="new-member-secondary">Gender</span></td>
 																				</tr>
-																		</table>
+																		</table> --}}
+																		<div class="d-flex w-100">
+																			<div class="pr-2">
+																				@if ($data->photo)
+																						<div class="rounded-circle overflow-hidden custom-list-photo-member image-profile-in-detail-page" style="width: 45px;height: 45px;background-image: url({{ Storage::url($data->photo) }});"></div>
+																				@else
+																						<img src="{{ $data->getUrlfriendlyAvatar() }}" alt="{{ $data->name }}" class="media-object rounded-circle image-profile-in-detail-page" width="45">
+																				@endif
+																			</div>
+																			<div class="w-100">
+																				<div class="row">
+																					<div class="col-xl-4"><strong>{{ $data->name }}</strong></div>
+																					<div class="col-xl-4">{!! $data->gender ? $data->gender == 'L' ? 'Laki - Laki' : 'Perempuan' : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>' !!}</div>
+																					<div class="col-xl-4">{{ date('F', strToTime($data->created_at)) }}</div>
+																				</div>
+																				<div class="row">
+																					<div class="col-xl-4"><small><i>{{ $data->fullname }}</i></small></div>
+																					<div class="col-xl-4">
+																						<small><i>
+																							{!! $data->date_of_birth ? Carbon\Carbon::parse($data->date_of_birth)->age : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>' !!}
+																							{{ $data->date_of_birth ? 'Tahun' : null }}
+																						</small></i>
+																					</div>
+																					<div class="col-xl-4">
+																						<small><i>
+																							{{ date('d - m - Y', strToTime($data->created_at)) }}
+																						</i></small>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
 																</a>
 															@endforeach
 													</div>

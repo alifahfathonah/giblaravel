@@ -326,8 +326,11 @@
                       <h6 class="mb-0">Amanah</h6>
                     </div>
                     <div class="col-sm-6 text-secondary">
-                      @if ($data->amanah_id)
-                        {{ $data->amanah->name }}
+                      @if ($data->amanahs)
+                        @php $no=1 @endphp
+                        @foreach ($data->amanahs as $data)
+                          <span class="badge badge-info py-1 px-2 mb-1 mr-1">{{ $no++ . '. ' . $data->name }}</span>                            
+                        @endforeach
                       @else
                         <span class="text-warning">belum ada amanah</span>
                       @endif
