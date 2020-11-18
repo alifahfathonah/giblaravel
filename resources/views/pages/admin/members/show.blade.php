@@ -57,7 +57,7 @@
                         <div class="h-100 w-100 photo-detail-tag-box">
                           <div class="button-detail-profile">
                             <a href="#" class="btn btn-warning"><i class="ft-edit"></i></a>
-                            <a href="#" class="btn btn-danger"><i class="ft-x "></i></a>
+                            <a href="{{ route('members.profile-photo-delete', $data->id) }}" class="btn btn-danger"><i class="ft-x "></i></a>
                             <a href="{{ route('members.profile-photo-download', $data->id) }}" class="btn btn-info"><i class="ft-download "></i></a>
                           </div>
                           <div class="h-100 w-100 bg-black photo-detail-tag-bg"></div>
@@ -69,10 +69,17 @@
                     @endif
                     <div class="@if ($data->photo) mt-3 @else mt-5 @endif">
                       <h4>{{ $data->fullname ? $data->fullname : $data->name }}</h4>
-                      <p class="text-secondary mb-1">{{ $data->division_id ? $data->division->name : 'Belum Masuk Divisi' }}</p>
-                      <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                      <button class="btn btn-primary">Follow</button>
-                      <button class="btn btn-outline-primary">Message</button>
+                      <p class="text-secondary mb-1"><i>{{ $data->division_id ? $data->division->name : 'Belum Masuk Divisi' }}</i></p>
+                      <p class="text-muted font-size-sm">
+                        @if ($data->province_id && $data->regency_id)
+                          {{ Str::title($regency_user->name) }},
+                          {{ Str::title($province_user->name) }}
+                        @elseif ($data->province_id) 
+                          {{ Str::title($province_user->name) }}
+                        @else
+                          {{ null }}
+                        @endif
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -88,7 +95,7 @@
             </div>
             <div class="col-xl-8">
               <div class="card">
-                <div class="card-body" id="locations">
+                <div class="card-body">
                   
                   <div class="row">
                     <div class="col-sm-3">
@@ -125,7 +132,7 @@
                       <h6 class="mb-0">Nomor HP</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      {!! $data->phone_number ?? '<span class="text-warning">belum isi data</span>' !!}
+                      {!! $data->phone_number ?? '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>' !!}
                     </div>
                   </div>
                   <hr>
@@ -136,9 +143,9 @@
                     </div>
                     <div class="col-sm-3 text-secondary">
                       @if ($data->province_id)
-                        @{{ provinces[0].name }}
+                        {{ Str::title($province_user->name) }}
                       @else
-                        <span class="text-warning">belum isi data</span>
+                        <span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>
                       @endif
                     </div>
                   </div>
@@ -150,9 +157,9 @@
                     </div>
                     <div class="col-sm-3 text-secondary">
                     @if ($data->regency_id)
-                      @{{ cities[0].name }}
+                      {{ Str::title($regency_user->name) }}
                     @else
-                      <span class="text-warning">belum isi data</span>
+                      <span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>
                     @endif
                     </div>
                   </div>
@@ -163,7 +170,7 @@
                       <h6 class="mb-0">Alamat Lengkap</h6>
                     </div>
                     <div class="col-sm-3 text-secondary">
-                      {!! $data->address ?? '<span class="text-warning">belum isi data</span>' !!}
+                      {!! $data->address ?? '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>' !!}
                     </div>
                   </div>
 
@@ -182,7 +189,7 @@
                           @if ($data->place_of_birth || $data->date_of_birth)
                             {{ $data->place_of_birth }}, {{ date('d F Y', strtotime($data->date_of_birth)) }}
                           @else
-                            <span class="text-warning">belum isi data</span>
+                            <span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>
                           @endif
                         </div>
                       </div>
@@ -193,7 +200,7 @@
                           <h6 class="mb-0">Gender</h6>
                         </div>
                         <div class="col-sm-8 text-secondary">
-                          {!! $data->gender ? $data->gender == 'L' ? 'Laki - Laki' : 'Perempuan' : '<span class="text-warning">belum isi data</span>' !!}
+                          {!! $data->gender ? $data->gender == 'L' ? 'Laki - Laki' : 'Perempuan' : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>' !!}
                         </div>
                       </div>
                       <hr>
@@ -209,7 +216,7 @@
                             {{ $data->marital_status == 'CERAI_HIDUP' ? 'Cerai Hidup' : null }}
                             {{ $data->marital_status == 'CERAI_MATI' ? 'Cerai Mati' : null }}
                           @else
-                            <span class="text-warning">belum isi data</span>
+                            <span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>
                           @endif
                         </div>
                       </div>
@@ -220,7 +227,7 @@
                           <h6 class="mb-0">Golongan Darah</h6>
                         </div>
                         <div class="col-sm-8 text-secondary">
-                          {!! $data->blood_type ?? '<span class="text-warning">belum isi data</span>' !!}
+                          {!! $data->blood_type ?? '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>' !!}
                         </div>
                       </div>
                       
@@ -239,7 +246,7 @@
                           @if ($data->graduate_id)
                             {{ $data->graduate->name }}
                           @else
-                            <span class="text-warning">belum isi data</span>
+                            <span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>
                           @endif
                         </div>
                       </div>
@@ -253,7 +260,7 @@
                           @if ($data->major_id)
                             {{ $data->major->name }}
                           @else
-                            <span class="text-warning">belum isi data</span>
+                            <span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>
                           @endif
                         </div>
                       </div>
@@ -267,7 +274,7 @@
                           @if ($data->hobby)
                             {{ $data->hobby }}
                           @else
-                            <span class="text-warning">belum isi data</span>
+                            <span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>
                           @endif
                         </div>
                       </div>
@@ -281,7 +288,7 @@
                           @if ($data->specialization_id)
                             {{ $data->specialization->name }}
                           @else
-                            <span class="text-warning">belum isi data</span>
+                            <span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>
                           @endif
                         </div>
                       </div>
@@ -301,7 +308,7 @@
                       @if ($data->created_at)
                         {{ date('dS F Y', strtotime($data->created_at)) }}
                       @else
-                        <span class="text-warning">belum isi data</span>
+                        <span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>
                       @endif
                     </div>
                   </div>
@@ -315,7 +322,7 @@
                       @if ($data->division_id)
                         {{ $data->division->name }}
                       @else
-                        <span class="text-warning">belum isi data</span>
+                        <span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>
                       @endif
                     </div>
                   </div>
@@ -326,12 +333,12 @@
                       <h6 class="mb-0">Amanah</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      @if ($data->amanahs)
+                      @if (count($data->amanahs) > 0)
                         @php $no=1 @endphp
                         @foreach ($data->amanahs as $data)
                           <span class="badge badge-info py-1 px-2 mb-1 mr-1">{{ $no++ . '. ' . $data->name }}</span>                            
                         @endforeach
-                        @else
+                      @else
                         <span class="text-warning">belum ada amanah</span>
                       @endif
                     </div>
@@ -347,40 +354,3 @@
       </div>
     </div>
 @endsection
-
-@push('after-script')
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-<script src="https://unpkg.com/vue-toasted"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-  var locations = new Vue({
-    el: "#locations",
-    mounted() {
-      this.getProvincesData();
-      this.getCitiesData();
-    },
-    data: {
-      provinces: null,
-      cities: null,
-      provinces_id: '{{ $data->province_id }}',
-      cities_id: '{{ $data->regency_id }}',
-    },
-    methods: {
-      getProvincesData() {
-        var self = this;
-        axios.get('{{ url("api/province") }}/'+ self.provinces_id)
-          .then(function(response){
-            self.provinces = response.data;
-          });
-      },
-      getCitiesData() {
-        var self = this;
-        axios.get('{{ url("api/city") }}/' + self.cities_id)
-          .then(function(response){
-            self.cities = response.data;
-          });
-      },
-    },
-  });
-</script>
-@endpush

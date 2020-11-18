@@ -31,6 +31,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         Route::delete('/{id}/force-delete', [MemberController::class, 'forceDelete'])->name('force-delete');
 
         Route::get('/profile/photo/{id}/download', [MemberController::class, 'profilePhotoDownload'])->name('profile-photo-download');
+        Route::get('/profile/photo/{id}/delete', [MemberController::class, 'profilePhotoDelete'])->name('profile-photo-delete');
     });
     
     Route::prefix('masters')->name('masters.')->group(function () {

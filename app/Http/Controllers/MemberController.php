@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Laravolt\Indonesia\Models\City;
+use Laravolt\Indonesia\Models\Province;
 
 class MemberController extends Controller
 {
@@ -68,8 +70,19 @@ class MemberController extends Controller
     public function show($id)
     {
         $data = $this->model::findOrFail($id);
+        if ($data->province_id) {
+            $province_user = Province::findOrFail($data->province_id);
+            if ($data->regency_id) {
+                $regency_user = City::findOrFail($data->regency_id);
+            } else {
+                $regency_user = null;
+            }
+        } else {
+            $province_user = null;
+            $regency_user = null;
+        }
 
-        return view($this->viewRoute.'.show', compact('data'));
+        return view($this->viewRoute.'.show', compact('data', 'province_user', 'regency_user'));
     }
 
     /**
@@ -165,5 +178,19 @@ class MemberController extends Controller
         $photoPath = $user_data->photo;
 
         return Storage::disk('public')->download($photoPath);
+    }
+
+    public function profilePhotoDelete($id)
+    {
+        $user_data = User::withTrashed()->findOrFail($id);
+        if ($user_data->photo) {
+            $imagePath = public_path('storage/'.$user_data->photo);
+            unlink($imagePath);
+            $user_data->update(['photo' => null]);
+            return redirect()->back();
+        } else {
+            return redirect()->back();
+        }
+
     }
 }
