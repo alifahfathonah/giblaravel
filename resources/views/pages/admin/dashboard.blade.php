@@ -71,7 +71,7 @@
 															<ul class="list-inline mb-0">
 																	<li>
 																			<a href={{ route('members.index') }}>
-																					<i class="ft-eye"></i>
+																					<i class="ft-list"></i> 
 																			</a>
 																	</li>
 															</ul>
@@ -81,23 +81,6 @@
 													<div id="recent-buyers" class="media-list">
 															@foreach ($new_users as $data)
 																	<a href="{{ route('members.show', $data->id) }}" class="media border-0 new-member-hover">
-																		{{-- <table>
-																				<tr style="height: 60%">
-																						<td rowspan="2" style="padding-right: 17px">
-																								@if ($data->photo)
-																										<div class="rounded-circle overflow-hidden custom-list-photo-member image-profile-in-detail-page" style="width: 45px;height: 45px;background-image: url({{ Storage::url($data->photo) }});"></div>
-																								@else
-																										<img src="{{ $data->getUrlfriendlyAvatar() }}" alt="{{ $data->name }}" class="media-object rounded-circle image-profile-in-detail-page" width="45">
-																								@endif
-																						</td>
-																						<td style="width: 400px"><span class="new-member-heading">{{ $data->fullname }}</span></td>
-																						<td><span class="new-member-heading">{!! $data->gender ? $data->gender == 'L' ? 'Laki - Laki' : 'Perempuan' : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>' !!}</span></td>
-																				</tr>
-																				<tr style="height: 40%">
-																						<td><span class="new-member-secondary">Nama</span></td>
-																						<td><span class="new-member-secondary">Gender</span></td>
-																				</tr>
-																		</table> --}}
 																		<div class="d-flex w-100">
 																			<div class="pr-2">
 																				@if ($data->photo)
@@ -109,14 +92,14 @@
 																			<div class="w-100">
 																				<div class="row">
 																					<div class="col-xl-4"><strong>{{ $data->name }}</strong></div>
-																					<div class="col-xl-4">{!! $data->gender ? $data->gender == 'L' ? 'Laki - Laki' : 'Perempuan' : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>' !!}</div>
+																					<div class="col-xl-4">{!! $data->gender ? $data->gender == 'L' ? 'Laki - Laki' : 'Perempuan' : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data gender</span>' !!}</div>
 																					<div class="col-xl-4">{{ date('F', strToTime($data->created_at)) }}</div>
 																				</div>
 																				<div class="row">
 																					<div class="col-xl-4"><small><i>{{ $data->fullname }}</i></small></div>
 																					<div class="col-xl-4">
 																						<small><i>
-																							{!! $data->date_of_birth ? Carbon\Carbon::parse($data->date_of_birth)->age : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data</span>' !!}
+																							{!! $data->date_of_birth ? Carbon\Carbon::parse($data->date_of_birth)->age : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data tanggal lahir</span>' !!}
 																							{{ $data->date_of_birth ? 'Tahun' : null }}
 																						</small></i>
 																					</div>
@@ -126,6 +109,9 @@
 																						</i></small>
 																					</div>
 																				</div>
+																			</div>
+																			<div class="d-flex pr-2" style="align-items: center">
+																				<i class="ft-eye eye-hover"></i>
 																			</div>
 																		</div>
 																</a>
@@ -159,7 +145,7 @@
 													<div class="media-list">
 															@foreach ($DIY_cities as $data)
 																@php $countUser = count(App\Models\User::where('regency_id', $data->id)->get() ) @endphp
-																<a href="{{ route('members.show', $data->id) }}" class="media border-0 domisili-count-hover {{ $countUser == 0 ? 'null-member-domisili' : null }}">
+																<a href="{{ $countUser > 0 ? route('members.show', $data->id) : '#' }}" class="media border-0 domisili-count-hover {{ $countUser == 0 ? 'null-member-domisili' : null }}">
 																	<div class="row w-100">
 																		<div class="col-6">
 																			<span>{{ Str::title($data->name) }}</span>

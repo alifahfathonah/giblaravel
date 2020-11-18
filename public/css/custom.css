@@ -110,7 +110,7 @@
 
 .new-member-hover {
     background-color: white;
-    border-radius: 100px 0px 0px 100px;
+    border-radius: 100px;
     transition: all 0.2s ease-out;
 }
 
@@ -146,6 +146,15 @@
     transform: scale(1.2);
     box-shadow: 0px 0px 7px gainsboro;
 }
+.new-member-hover .eye-hover {
+    opacity: 0;
+    transition: all 0.4s ease-out;
+}
+
+.new-member-hover:hover .eye-hover {
+    opacity: 1;
+}
+
 .domisili-count-hover {
     background-color: white;
     transition: all 0.2s ease-out;
