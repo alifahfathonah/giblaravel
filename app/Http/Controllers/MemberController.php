@@ -154,6 +154,8 @@ class MemberController extends Controller
         }
         $this->model::onlyTrashed()->findOrFail($id)->forceDelete();
 
+        $user_data->amanahs()->detach();
+
         return redirect()->back();
     }
 
