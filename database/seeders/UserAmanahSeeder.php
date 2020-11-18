@@ -14,9 +14,9 @@ class UserAmanahSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('user_amanah')->truncate();
+        DB::table('amanah_user')->truncate();
 
-        DB::table('user_amanah')->insert([
+        DB::table('amanah_user')->insert([
             'user_id' => 1,    
             'amanah_id' => 7,    
             'created_at' => now(),

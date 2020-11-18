@@ -146,4 +146,19 @@
     transform: scale(1.2);
     box-shadow: 0px 0px 7px gainsboro;
 }
+.domisili-count-hover {
+    background-color: white;
+    transition: all 0.2s ease-out;
+}
+.domisili-count-hover:hover span {
+    color: rgb(250, 117, 125) !important;
+}
+.domisili-count-hover:hover {
+    background-color: rgb(244, 245, 250);
+}
+
+.null-member-domisili {
+    background-color: rgba(244, 245, 250, 0.5);
+}
+
 /* endContent */

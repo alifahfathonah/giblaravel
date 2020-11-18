@@ -52,7 +52,9 @@ class MemberController extends Controller
 
         $data['password'] = Hash::make($request->password);
 
-        $this->model::create($data);
+        $member_id = $this->model::create($data);
+
+        $member_id->amanahs()->sync($request->amanah_id);
 
         return redirect()->route($this->routeToIndex);
     }
@@ -79,8 +81,10 @@ class MemberController extends Controller
     public function edit($id)
     {
         $data = $this->model::findOrFail($id);
+        $selected_amanahs = $data->amanahs->pluck('id')->toArray();
         return view($this->viewRoute.'.form', [
-            'data' => $data
+            'data' => $data,
+            'selected_amanahs' => $selected_amanahs,
         ]);
     }
 
@@ -107,7 +111,8 @@ class MemberController extends Controller
         } else {
             $data['password'] = $user_data->password;
         }
-        $this->model::findOrFail($id)->update($data);
+        $user_data->update($data);
+        $user_data->amanahs()->sync($request->amanah_id);
 
         return redirect()->route($this->routeToIndex);
     }

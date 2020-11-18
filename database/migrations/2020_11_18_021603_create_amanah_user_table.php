@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserAmanahTable extends Migration
+class CreateAmanahUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateUserAmanahTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_amanah', function (Blueprint $table) {
+        Schema::create('amanah_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('amanah_id');
-
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateUserAmanahTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_amanah');
+        Schema::dropIfExists('amanah_user');
     }
 }

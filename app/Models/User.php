@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Master\Amanah;
 use App\Models\Master\Division;
 use App\Models\Master\Graduate;
 use App\Models\Master\Major;
@@ -109,5 +110,10 @@ class User extends Authenticatable
     public function specialization()
     {
         return $this->belongsTo(Specialization::class);
+    }
+
+    public function amanahs()
+    {
+        return $this->belongsToMany(Amanah::class, 'amanah_user', 'user_id', 'amanah_id');
     }
 }
