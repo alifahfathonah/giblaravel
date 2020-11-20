@@ -15,6 +15,9 @@ class CreateSosmedsTable extends Migration
     {
         Schema::create('sosmeds', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

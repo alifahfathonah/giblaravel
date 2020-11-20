@@ -180,6 +180,24 @@ class MemberController extends Controller
         return Storage::disk('public')->download($photoPath);
     }
 
+    public function profilePhotoUpdate(Request $request, $id)
+    {
+        $user_data = User::findOrFail($id);
+        if ($request->photo) {
+            if($user_data->photo){
+                $imagePath = public_path('storage/'.$user_data->photo);
+                unlink($imagePath);
+                $user_data->update(['photo' => $request->file('photo')->store('assets/photos', 'public')]);
+                return redirect()->back();
+            }
+            $user_data->update(['photo' => $request->file('photo')->store('assets/photos', 'public')]);
+            return redirect()->back();
+        } else {
+            return redirect()->back();
+        }
+
+    }
+
     public function profilePhotoDelete($id)
     {
         $user_data = User::withTrashed()->findOrFail($id);

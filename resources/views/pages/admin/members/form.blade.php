@@ -27,11 +27,11 @@
     
 @endif
 
-@section('data-color', 'bg-gradient-x-blue-cyan') 
-
 @push('after-link')
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">    
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
 @endpush
+
+@section('data-color', 'bg-gradient-x-blue-cyan') 
 
 @section('content')
     <div class="app-content content">
@@ -257,29 +257,35 @@
                                       </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                      <div class="form-group skin skin-flat">
-                                          <label for="divisionSelect">Divisi</label>
-                                          <select name="division_id" id="divisionSelect" class="form-control round">
-                                            <option value=""><i>~ pilih divisi ~</i></option>
-                                            @foreach ($divisions as $divisi)
-                                              <option value="{{ $divisi->id }}">{{ $divisi->name }}</option>                                                
-                                            @endforeach
-                                          </select>
-                                      </div>
-                                    </div>
-                                    
-                                    <div class="col-md-6">
-                                      <div class="form-group">
-                                          <label for="amanahSelect">Amanah</label>
-                                          @foreach ($amanahs as $amanah)
-                                            <div>
-                                              <label>
-                                                <input name="amanah_id[]" type="checkbox" class="mr-1" value="{{ $amanah->id }}" {{ $isEdit ? in_array($amanah->id, $selected_amanahs) ? 'checked' : null : null }}>
-                                                {{ $amanah->name }}
-                                              </label>
-                                            </div>
-                                          @endforeach
+                                    <div class="col-xl-6">
+                                      <div class="row">
+                                        
+                                        <div class="col-12">
+                                          <div class="form-group skin skin-flat">
+                                              <label for="divisionSelect">Divisi</label>
+                                              <select name="division_id" id="divisionSelect" class="form-control round">
+                                                <option value=""><i>~ pilih divisi ~</i></option>
+                                                @foreach ($divisions as $divisi)
+                                                  <option value="{{ $divisi->id }}">{{ $divisi->name }}</option>                                                
+                                                @endforeach
+                                              </select>
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                          <div class="form-group">
+                                              <label for="amanahSelect">Amanah</label>
+                                              <div class="row p-2">
+                                                @foreach ($amanahs as $amanah)
+                                                  <label class="col-6 col-lg-4 col-xl-3 label-amanah-hover">
+                                                    <input name="amanah_id[]" type="checkbox" class="mr-1 form-check-input" value="{{ $amanah->id }}" {{ $isEdit ? in_array($amanah->id, $selected_amanahs) ? 'checked' : null : null }}>
+                                                    {{ $amanah->name }}
+                                                  </label>
+                                                @endforeach
+                                              </div>
+                                          </div>
+                                        </div>
+                                        
                                       </div>
                                     </div>
 																		
@@ -307,18 +313,21 @@
 																			@else
 																				<div class=" col-md-6">
 																					<div class="form-group">
-																							<label for="photoInput">Upload Foto Profil</label>
-																							<div class="fileinput fileinput-new form-control custom-upload-photo-box" data-provides="fileinput">
-																								<div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
-																								<div>
-																									<span class="btn btn-outline-secondary btn-file">
-																										<span class="fileinput-new">Select image</span>
-																										<span class="fileinput-exists">Change</span>
-																										<input type="file" name="photo">
-																									</span>
-																									<a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
-																								</div>
+																						<label for="photoInput">Upload Foto Profil</label> 
+																						<div data-provides="fileinput" class="fileinput form-control custom-upload-photo-box fileinput-exists">
+																							<div data-trigger="fileinput" class="fileinput-preview img-thumbnail" style="width: 200px; height: 150px; line-height: 150px;">
+																								<img src="{{ $data->getUrlfriendlyAvatar() }}" style="width: 100%">
+																							</div> 
+																							<div>
+																								<span class="btn btn-outline-secondary btn-file">
+																									<span class="fileinput-new">Select image</span> 
+																									<span class="fileinput-exists">Change</span> 
+																									<input type="hidden" value="" name="">
+																									<input type="file" name="photo">
+																								</span> 
+																								<a href="#" data-dismiss="fileinput" class="btn btn-outline-secondary fileinput-exists">Remove</a>
 																							</div>
+																						</div>
 																					</div>
 																				</div>		
 																			@endif
@@ -345,7 +354,7 @@
 
                                 </div>
 
-                                <div class="form-actions">
+                                <div class="form-actions button-on-bottom">
                                     <a href="{{ route('members.index') }}" class="btn btn-warning mr-1 text-white">
                                         <i class="ft-arrow-left"></i> Kembali
                                     </a>

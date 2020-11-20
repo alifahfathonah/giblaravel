@@ -24,6 +24,8 @@
               </li>
               <li class="{{ request()->routeIs('masters.divisions*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('masters.divisions.index') }}">Divisi</a>
               </li>
+              <li class="{{ request()->routeIs('masters.sosmeds*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('masters.sosmeds.index') }}">Social Media</a>
+              </li>
             </ul>
           </li>
           <li class="nav-item has-sub {{ request()->routeIs('members*') ? 'open' : '' }}"><a href="#"><i class="ft-users"></i><span class="menu-title" data-i18n="">Kader</span></a>

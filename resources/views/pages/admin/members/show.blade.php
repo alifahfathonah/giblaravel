@@ -2,9 +2,15 @@
 
 @section('title', 'Member ~Detail')    
 
+@push('after-link')
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
+@endpush
+
 @section('data-color', 'bg-gradient-x-blue-cyan') 
 
 @section('content')
+  @include('components.member-photo-modal')
+
     <div class="app-content content">
       <div class="content-wrapper">
         <div class="content-wrapper-before"></div>
@@ -349,7 +355,7 @@
                           <span class="badge badge-info py-1 px-2 mb-1 mr-1">{{ $no++ . '. ' . $data->name }}</span>                            
                         @endforeach
                       @else
-                        <span class="text-warning">belum ada amanah</span>
+                        <span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum ada amanah yang diberikan</span>
                       @endif
                     </div>
                   </div>
@@ -364,3 +370,7 @@
       </div>
     </div>
 @endsection
+
+@push('after-script')
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
+@endpush

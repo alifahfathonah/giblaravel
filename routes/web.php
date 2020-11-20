@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Master\MajorController;
 use App\Http\Controllers\Admin\Master\AmanahController;
 use App\Http\Controllers\Admin\Master\DivisionController;
 use App\Http\Controllers\Admin\Master\GraduateController;
+use App\Http\Controllers\Admin\Master\SosmedController;
 use App\Http\Controllers\Admin\Master\SpecializationController;
 
 /*
@@ -20,9 +21,12 @@ use App\Http\Controllers\Admin\Master\SpecializationController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function() {
+return view('landing-page');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');    
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');    
 
     Route::resource('/members', MemberController::class);
     Route::prefix('members')->name('members.')->group(function () {
@@ -30,6 +34,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         Route::get('/{id}/restore', [MemberController::class, 'restore'])->name('restore');
         Route::delete('/{id}/force-delete', [MemberController::class, 'forceDelete'])->name('force-delete');
 
+        Route::put('/profile/photo/{id}/update', [MemberController::class, 'profilePhotoUpdate'])->name('profile-photo-update');
         Route::get('/profile/photo/{id}/download', [MemberController::class, 'profilePhotoDownload'])->name('profile-photo-download');
         Route::get('/profile/photo/{id}/delete', [MemberController::class, 'profilePhotoDelete'])->name('profile-photo-delete');
     });
@@ -58,5 +63,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         Route::resource('/divisions', DivisionController::class);
         Route::get('/divisions/{id}/restore', [DivisionController::class, 'restore'])->name('divisions.restore');
         Route::delete('/divisions/{id}/force-delete', [DivisionController::class, 'forceDelete'])->name('divisions.force-delete');
+        
+        Route::resource('/sosmeds', SosmedController::class);
+        Route::get('/sosmeds/{id}/restore', [SosmedController::class, 'restore'])->name('sosmeds.restore');
+        Route::delete('/sosmeds/{id}/force-delete', [SosmedController::class, 'forceDelete'])->name('sosmeds.force-delete');
     });   
 });
