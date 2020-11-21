@@ -203,4 +203,16 @@
     justify-content: center;
     transform: translateY(-100px);
 }
+.modal-change-photo-title {
+    display: flex;
+    justify-content: space-between;
+}
+.modal-change-photo-title span {
+    font-size: 20px;
+    transition: all 300ms;
+}
+.modal-change-photo-title span:hover {
+    font-weight: bolder;
+    color: red;
+}
 /* endContent */

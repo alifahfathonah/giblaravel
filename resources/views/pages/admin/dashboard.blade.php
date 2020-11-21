@@ -89,24 +89,41 @@
 																						<img src="{{ $data->getUrlfriendlyAvatar() }}" alt="{{ $data->name }}" class="media-object rounded-circle image-profile-in-detail-page" width="45">
 																				@endif
 																			</div>
-																			<div class="w-100">
-																				<div class="row">
-																					<div class="col-xl-4"><strong>{{ $data->name }}</strong></div>
-																					<div class="col-xl-4">{!! $data->gender ? $data->gender == 'L' ? 'Laki - Laki' : 'Perempuan' : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data gender</span>' !!}</div>
-																					<div class="col-xl-4">{{ date('F', strToTime($data->created_at)) }}</div>
-																				</div>
-																				<div class="row">
-																					<div class="col-xl-4"><small><i>{{ $data->fullname }}</i></small></div>
-																					<div class="col-xl-4">
-																						<small><i>
-																							{!! $data->date_of_birth ? Carbon\Carbon::parse($data->date_of_birth)->age : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data tanggal lahir</span>' !!}
-																							{{ $data->date_of_birth ? 'Tahun' : null }}
-																						</small></i>
+																			<div class="w-100 row">
+																				<div class="col-md-4">
+																					<div class="row">
+																						<div class="col-12">
+																							<div class=""><strong>{{ $data->name }}</strong></div>
+																						</div>
+																						<hr>
+																						<div class="col-12">
+																							<div class=""><small><i>{{ $data->fullname }}</i></small></div>
+																						</div>
 																					</div>
-																					<div class="col-xl-4">
-																						<small><i>
+																					<hr class="p-0 mb-0 d-block d-md-none">
+																				</div>
+																				<div class="col-md-4">
+																					<div class="row">
+																						<div class="col-12">
+																							<div class="">{!! $data->gender ? $data->gender == 'L' ? 'Laki - Laki' : 'Perempuan' : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data gender</span>' !!}</div>
+																						</div>
+																						<div class="col-12">
+																							<small><i>
+																								{!! $data->date_of_birth ? Carbon\Carbon::parse($data->date_of_birth)->age : '<span class="text-warning" style="font-size: 0.8em"><i class="ft-alert-circle"></i> belum isi data tanggal lahir</span>' !!}
+																								{{ $data->date_of_birth ? 'Tahun' : null }}
+																							</small></i>
+																						</div>
+																					</div>
+																					<hr class="p-0 mb-0 d-block d-md-none">
+																				</div>
+																				<div class="col-md-4">
+																					<div class="row">
+																						<div class="col-12">
+																							<div class="">{{ date('F', strToTime($data->created_at)) }}</div>
+																						</div>
+																						<div class="col-12">
 																							{{ date('d - m - Y', strToTime($data->created_at)) }}
-																						</i></small>
+																						</div>
 																					</div>
 																				</div>
 																			</div>

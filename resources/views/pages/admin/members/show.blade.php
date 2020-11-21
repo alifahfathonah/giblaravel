@@ -379,7 +379,11 @@
       $('#changeModalPhotoBox').css("display", "none");
       $('#cancelModalPhoto').click(function(){
         $('#changeModalPhotoBox').css("display", "none");
-      });$('#editPhotoButton').click(function(){
+      });
+      $('#ftXCancelModal').click(function(){
+        $('#changeModalPhotoBox').css("display", "none");
+      });
+      $('#editPhotoButton').click(function(){
         $('#changeModalPhotoBox').css("display", "flex");
       });
     });
