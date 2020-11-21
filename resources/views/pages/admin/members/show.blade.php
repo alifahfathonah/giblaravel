@@ -62,7 +62,7 @@
                       <div class="rounded-circle overflow-hidden custom-list-photo-member image-profile-in-detail-page" style="width: 300px;height: 300px;background-image: url({{ Storage::url($data->photo) }});">
                         <div class="h-100 w-100 photo-detail-tag-box">
                           <div class="button-detail-profile">
-                            <a href="#" class="btn btn-warning"><i class="ft-edit"></i></a>
+                            <a href="#" id="editPhotoButton" class="btn btn-warning"><i class="ft-edit"></i></a>
                             <a href="{{ route('members.profile-photo-delete', $data->id) }}" class="btn btn-danger"><i class="ft-x "></i></a>
                             <a href="{{ route('members.profile-photo-download', $data->id) }}" class="btn btn-info"><i class="ft-download "></i></a>
                           </div>
@@ -373,4 +373,15 @@
 
 @push('after-script')
   <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
+  {{-- <script src="/chameleon/src/js/core/libraries/jquery.min.js"></script> --}}
+  <script>
+    $(document).ready(function() {
+      $('#changeModalPhotoBox').css("display", "none");
+      $('#cancelModalPhoto').click(function(){
+        $('#changeModalPhotoBox').css("display", "none");
+      });$('#editPhotoButton').click(function(){
+        $('#changeModalPhotoBox').css("display", "flex");
+      });
+    });
+  </script>
 @endpush

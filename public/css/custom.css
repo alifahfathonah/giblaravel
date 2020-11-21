@@ -193,7 +193,7 @@
 }
 .custom-modal-in-show-page .modal-box {
     padding: 30px;
-    min-width: 400px;
+    /* min-width: 400px; */
     background-color: white;
     margin-top: 100px;
     border-radius: 15px;

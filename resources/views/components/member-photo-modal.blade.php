@@ -1,12 +1,12 @@
-<div class="custom-modal-in-show-page">
-<div class="modal-box">
+<div class="custom-modal-in-show-page row" id="changeModalPhotoBox">
+<div class="modal-box col-sm-8 col-xl-4">
     <form action="{{ route('members.profile-photo-update', $data->id) }}" enctype="multipart/form-data" method="POST">
     @csrf @method('PUT')
     @if ($data->photo)
     <div>
         <h3>Change Foto Profil</h3> 
         <div data-provides="fileinput" class="fileinput form-control custom-upload-photo-box fileinput-exists">
-        <div data-trigger="fileinput" class="fileinput-preview img-thumbnail" style="width: 500px; height: 350px; line-height: 150px;">
+        <div data-trigger="fileinput" class="fileinput-preview img-thumbnail">
             <img src="{{ Storage::url($data->photo) }}">
         </div> 
         <div>
@@ -17,8 +17,8 @@
             <input type="file" name="photo">
             </span> 
             <a href="#" data-dismiss="fileinput" class="btn btn-outline-secondary fileinput-exists">Remove</a>
-            <button type="submit" class="btn btn-md btn-info float-right">Submit</button>
-            <span onclick="(function(){ document.getElementsByClassName('custom-modal-in-show-page').style.opacity = '0'; return false; })();return false;" class="btn btn-md btn-info float-right">Submit</span>
+            <button type="submit" class="btn btn-md btn-info float-right"><i class="ft-check"></i> <span class="d-none d-md-inline">Submit</span></button>
+            <span id="cancelModalPhoto" class="btn btn-md btn-danger float-right mr-1"><i class="ft-x"></i> <span class="d-none d-md-inline">Cancel</span></span>
         </div>
         </div>
     </div>
@@ -37,8 +37,8 @@
             <input type="file" name="photo">
             </span> 
             <a href="#" data-dismiss="fileinput" class="btn btn-outline-secondary fileinput-exists">Remove</a>
-            <button onclick="" type="submit" class="btn btn-md btn-info float-right">Submit</button>
-            <span onclick="(function(){ document.getElementsByClassName('custom-modal-in-show-page').style.display = 'none'; return false; })();return false;" class="btn btn-md btn-info float-right">Submit</span>
+            <button type="submit" class="btn btn-md btn-info float-right"><i class="ft-check"></i> <span class="d-none d-md-inline">Submit</span></button>
+            <span id="cancelModalPhoto" class="btn btn-md btn-danger float-right mr-1"><i class="ft-x"></i> <span class="d-none d-md-inline">Cancel</span></span>
         </div>
         </div>
     </div>
