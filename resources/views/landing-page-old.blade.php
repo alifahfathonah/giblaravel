@@ -1,20 +1,3 @@
-{{-- <x-app-layout>
-	<x-slot name="header">
-		<h2 class="font-semibold text-xl text-gray-800 leading-tight">
-			{{ __('Dashboard') }}
-		</h2>
-	</x-slot>
-
-	<div class="py-12">
-		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-			<div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-				<x-jet-welcome />
-			</div>
-		</div>
-	</div>
-</x-app-layout> --}}
-
-
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
   <head>
@@ -40,18 +23,33 @@
 	<link rel="stylesheet" type="text/css" href="/chameleon/theme-assets/css/core/menu/menu-types/vertical-menu.css">
 	<link rel="stylesheet" type="text/css" href="/chameleon/theme-assets/css/core/colors/palette-gradient.css">
 	<link rel="stylesheet" type="text/css" href="/chameleon/theme-assets/css/pages/dashboard-ecommerce.css">
+	{{-- OwlCarousel --}}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
 	<!-- END Page Level CSS-->
 	<!-- BEGIN Custom CSS-->
 	<style>
-		.carousel-item {
+		.carousel-outer {
 			height: 100vh;
 			min-height: 350px;
-			background: no-repeat center center scroll;
-			-webkit-background-size: cover;
-			-moz-background-size: cover;
-			-o-background-size: cover;
-			background-size: cover;
 			}
+		.slider-item-box {
+			position: relative;
+		}
+		.slider-inside-box {
+			position: absolute;
+		}
+		.slider-inside {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.slider-bg {
+			height: 100vh;
+			background-color: gray;
+			background-position: center;
+			background-size: cover;
+		}
 	</style>
 	<!-- END Custom CSS-->
   </head>
@@ -76,48 +74,28 @@
 	  </div>
 	</nav>
 
-	<header>
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-	<ol class="carousel-indicators">
-	  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-	  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-	  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-	</ol>
-	<div class="carousel-inner" role="listbox">
-	  <!-- Slide One - Set the background image for this slide in the line below -->
-	  <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
-		<div class="carousel-caption d-none d-md-block">
-			<h1>YOMAN</h1>
-		  <h2 class="display-4">First Slide</h2>
-		  <p class="lead">This is a description for the first slide.</p>
-		</div>
-	  </div>
-	  <!-- Slide Two - Set the background image for this slide in the line below -->
-	  <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
-		<div class="carousel-caption d-none d-md-block">
-		  <h2 class="display-4">Second Slide</h2>
-		  <p class="lead">This is a description for the second slide.</p>
-		</div>
-	  </div>
-	  <!-- Slide Three - Set the background image for this slide in the line below -->
-	  <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
-		<div class="carousel-caption d-none d-md-block">
-		  <h2 class="display-4">Third Slide</h2>
-		  <p class="lead">This is a description for the third slide.</p>
-		</div>
-	  </div>
-	</div>
-	{{-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		  <span class="sr-only">Previous</span>
-	</a>
-	<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		  <span class="sr-only">Next</span>
-	</a> --}}
-  </div>
-</header>
+	
 
+	<header>
+			<div class="owl-carousel owl-theme carousel-outer">
+				<div class="item slider-item-box">
+					<div class="slider-inside-box">
+						<div class="row">
+							<div class="col-12 col-xl-6">
+								<div class="slider-inside">
+									<h1>HOLA!</h1>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="slider-bg" style="background-image: url('https://images.alphacoders.com/963/963895.jpg');"></div>
+				</div>
+				<div class="item slider-item-box">
+					<div class="slider-bg" style="background-image: url('https://images5.alphacoders.com/492/492784.jpg');"></div>
+				</div>
+			</div>
+	</header>
+	
 	<!-- BEGIN VENDOR JS-->
 	<script src="/chameleon/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
 	<!-- BEGIN VENDOR JS-->
@@ -131,5 +109,19 @@
 	<!-- BEGIN PAGE LEVEL JS-->
 	<script src="/chameleon/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
 	<!-- END PAGE LEVEL JS-->
+	{{-- OwlCarousel --}}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.owl-carousel').owlCarousel({
+				loop:true,
+				autoplay: true,
+				margin:10,
+				nav:false,
+				items: 1,
+				dots: false,
+			});
+		});
+	</script>
   </body>
 </html>

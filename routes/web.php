@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\Master\SpecializationController;
 |
 */
 Route::get('/', function() {
-return view('landing-page');
+return view('landing-page-old');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
